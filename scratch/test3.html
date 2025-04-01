@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asian Hate Crimes Over Time by Offense Type</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { font-family: sans-serif; background: #fff; margin: 40px; }
+    .axis-label { font-size: 12px; }
+    .legend { font-size: 13px; }
+    .legend rect { stroke: #333; stroke-width: 0.5; }
+    .tooltip {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 5px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Asian Hate Crimes Over Time by Offense Type</h2>
+  <p>Both total volume and offense composition are shown.</p>
+  <svg width="960" height="500"></svg>
+
+  <script>
+    const svg = d3.select("svg"),
+          margin = {top: 30, right: 180, bottom: 40, left: 20},
+          width = +svg.attr("width") - margin.left - margin.right,
+          height = +svg.attr("height") - margin.top - margin.bottom,
+          g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const color = d3.scaleOrdinal()
+      .domain([
+        "Vandalism",
+        "Theft/Fraud/Burglary",
+        "Sexual Offense",
+        "Other",
+        "Intimidation",
+        "Drug/Weapons Violation",
+        "Assault",
+      ])
+      .range([
+        "#c6dbef",
+        "#9ecae1",
+        "#6baed6",
+        "#4292c6",
+        "#2171b5",
+        "#08519c",
+        "#08306b"
+      ]);
+
+      d3.csv("asian_hate_grouped.csv").then(raw => {
+        raw.forEach(d => {
+            d.date = new Date(d.month);
+            d.count = +d.n;
+        });
+
+        const categories = Array.from(new Set(raw.map(d => d.offense_category)));
+
+        // Convert long to wide format for stacking
+        const rolled = Array.from(
+            d3.group(raw, d => d.date),
+            ([date, values]) => {
+            const row = { date };
+            values.forEach(d => row[d.offense_category] = d.count);
+            return row;
+            }
+        );
+
+
+        // Step 2: Set up categories and scales
+
+        const x = d3.scaleTime()
+            .domain(d3.extent(rolled, d => d.date))
+            .range([0, width]);
+
+        const stack = d3.stack()
+            .keys(categories)
+            .order(d3.stackOrderNone)
+            .offset(d3.stackOffsetNone);
+
+        const series = stack(rolled);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(series, s => d3.max(s, d => d[1]))])
+            .nice()
+            .range([height, 0]);
+
+        const area = d3.area()
+            .x(d => x(d.data.date))
+            .y0(d => y(d[0]))
+            .y1(d => y(d[1]));
+
+        g.selectAll("path")
+            .data(series)
+            .enter().append("path")
+            .attr("fill", d => color(d.key))
+            .attr("d", area)
+            .append("title")
+            .text(d => d.key);
+
+        g.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x));
+
+        g.append("g")
+            .call(d3.axisLeft(y));
+
+        // Legend (same as before)
+        const legend = svg.append("g")
+            .attr("transform", `translate(${width + margin.left + 20},${margin.top})`);
+
+        categories.forEach((key, i) => {
+            const row = legend.append("g")
+            .attr("transform", `translate(0, ${i * 22})`);
+
+            row.append("rect")
+            .attr("width", 18)
+            .attr("height", 18)
+            .attr("fill", color(key));
+
+            row.append("text")
+            .attr("x", 24)
+            .attr("y", 13)
+            .text(key);
+        });
+        });
+
+
+  </script>
+</body>
+</html>

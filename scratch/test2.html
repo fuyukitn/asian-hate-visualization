@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hate Crime Data Story</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+    }
+    svg {
+      width: 60vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      overflow: visible;
+    }
+    .right-panel {
+      width: 40vw;
+      margin-left: 60vw;
+      padding: 0 20px;
+    }
+    .bar {
+      fill: #ccc;
+    }
+    .label {
+      fill: black;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    .highlight-total {
+      fill: #ff4136;
+    }
+    .highlight-rate {
+      fill: #0074d9;
+    }
+    .step {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .axis-label {
+      font-size: 14px;
+      fill: #333;
+    }
+  </style>
+</head>
+<body>
+  <svg></svg>
+
+  <div class="right-panel">
+    <!-- Story 1: Total Hate Crimes -->
+    <div class="scroll-trigger" data-step="1">
+      <div class="step" id="step-1">
+        <div>
+          <h3>Top Counties by Total Hate Crimes</h3>
+          <p>This chart shows the 40 counties with the most reported hate crimes. The top 10 are highlighted in red.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Story 2: Hate Crimes per Capita -->
+    <div class="scroll-trigger" data-step="2">
+      <div class="step" id="step-2">
+        <div>
+          <h3>Top Counties by Per Capita Hate Crimes</h3>
+          <p>Now we see hate crimes per 10,000 Asian residents. New top 10 counties are highlighted in blue, while the original top 10 are repositioned.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Story 3: Zoom In on Fairfax -->
+    <div class="scroll-trigger" data-step="3">
+      <div class="step" id="step-3">
+        <div>
+          <h3>Zoom In: Fairfax, Virginia</h3>
+          <p>We now zoom in on Fairfax, Virginia—the county with the highest hate crime rate per 10,000 Asian residents.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const svg = d3.select("svg");
+    const margin = { top: 50, right: 120, bottom: 50, left: 20 };
+    const chartWidth = window.innerWidth * 0.60;
+    const width = chartWidth - margin.left - margin.right;
+    const height = window.innerHeight - margin.top - margin.bottom;
+
+    const g = svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const xAxisGroup = svg.append("g")
+      .attr("transform", `translate(${margin.left}, ${height + margin.top})`)
+      .attr("class", "x-axis");
+
+    const xLabel = svg.append("text")
+      .attr("class", "axis-label")
+      .attr("text-anchor", "middle")
+      .attr("x", margin.left + width / 2)
+      .attr("y", height + margin.top + 40);
+
+    let data = [];
+    let top10ByTotal = [];
+    let top10ByRate = [];
+
+    // Load the CSV data
+    d3.csv("asian_animated.csv").then(csv => {
+      csv.forEach(d => {
+        d.crime_total = +d.crime_total;
+        d.crime_rate = +d.crime_rate;
+      });
+
+      // Choose the top 40 counties by total crimes
+      data = csv.sort((a, b) => d3.descending(a.crime_total, b.crime_total)).slice(0, 40);
+      top10ByTotal = data.slice(0, 10).map(d => d.county_state);
+
+      // Initial render with total crimes
+      updateChart("crime_total");
+
+      // Get all scroll triggers
+      const triggers = document.querySelectorAll(".scroll-trigger");
+
+      // Debounce the scroll events to avoid flicker
+      let scrollTimeout;
+      window.addEventListener("scroll", () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          triggers.forEach((el, i) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+              let metric;
+              if (i === 0) metric = "crime_total";
+              else if (i === 1) metric = "crime_rate";
+              else if (i === 2) metric = "fairfax";
+              updateChart(metric);
+            }
+          });
+        }, 150);
+      });
+    });
+
+    function updateChart(metric) {
+      // If the third story is active, zoom in on Fairfax, Virginia.
+      if (metric === "fairfax") {
+        // Filter for Fairfax only.
+        const filtered = data.filter(d => d.county_state === "Fairfax, Virginia");
+        // Use the crime_rate for scaling.
+        const x = d3.scaleLinear()
+          .domain([0, d3.max(filtered, d => d.crime_rate)])
+          .range([0, width]);
+        const y = d3.scaleBand()
+          .domain(filtered.map(d => d.county_state))
+          .range([0, height])
+          .padding(0.2);
+
+        // Update the bar for Fairfax.
+        const bars = g.selectAll("rect")
+          .data(filtered, d => d.county_state);
+        bars.join(
+          enter => enter.append("rect")
+            .attr("x", 0)
+            .attr("height", y.bandwidth())
+            .attr("y", d => y(d.county_state))
+            .attr("width", 0)
+            .attr("class", "bar highlight-rate")
+            .transition().duration(1000)
+            .attr("width", d => x(d.crime_rate)),
+          update => update.transition().duration(1000)
+            .attr("y", d => y(d.county_state))
+            .attr("height", y.bandwidth())
+            .attr("width", d => x(d.crime_rate))
+        );
+
+        // Update the label for Fairfax.
+        const labels = g.selectAll("text.label")
+          .data(filtered, d => d.county_state + '-' + metric);
+        labels.join(
+          enter => enter.append("text")
+            .attr("class", "label")
+            .attr("text-anchor", "start")
+            .attr("x", d => x(d.crime_rate) + 5)
+            .attr("y", d => y(d.county_state) + y.bandwidth() / 2 + 5)
+            .style("opacity", 0)
+            .text(d => d.county_state)
+            .transition().duration(800)
+            .style("opacity", 1),
+          update => update.transition().duration(800)
+            .attr("x", d => x(d.crime_rate) + 5)
+            .attr("y", d => y(d.county_state) + y.bandwidth() / 2 + 5),
+          exit => exit.transition().duration(300).style("opacity", 0).remove()
+        );
+
+        // Update the x-axis and axis label.
+        const axis = d3.axisBottom(x).ticks(5);
+        xAxisGroup.transition().duration(1000).call(axis);
+        xLabel.text("Hate crime rate per 10k Asian population (Fairfax, Virginia)");
+        return;
+      }
+
+      // For the first two stories ("crime_total" and "crime_rate"),
+      // sort the data using the current metric.
+      const sorted = data.sort((a, b) => d3.descending(a[metric], b[metric]));
+
+      // Define scales.
+      const x = d3.scaleLinear()
+        .domain([0, d3.max(sorted, d => d[metric])])
+        .range([0, width]);
+      const y = d3.scaleBand()
+        .domain(sorted.map(d => d.county_state))
+        .range([0, height])
+        .padding(0.2);
+
+      // For "crime_rate", compute the top 10 based on the new metric.
+      top10ByRate = sorted.slice(0, 10).map(d => d.county_state);
+
+      // Update bars.
+      const bars = g.selectAll("rect")
+        .data(sorted, d => d.county_state);
+      bars.join(
+        enter => enter.append("rect")
+          .attr("x", 0)
+          .attr("height", y.bandwidth())
+          .attr("y", d => y(d.county_state))
+          .attr("width", 0)
+          .attr("class", d => {
+            if (top10ByTotal.includes(d.county_state)) return "bar highlight-total";
+            else if (metric === "crime_rate" && top10ByRate.includes(d.county_state)) return "bar highlight-rate";
+            else return "bar";
+          })
+          .transition().duration(1000)
+          .attr("width", d => x(d[metric])),
+        update => update.transition().duration(1000)
+          .attr("y", d => y(d.county_state))
+          .attr("height", y.bandwidth())
+          .attr("width", d => x(d[metric]))
+          .attr("class", d => {
+            if (top10ByTotal.includes(d.county_state)) return "bar highlight-total";
+            else if (metric === "crime_rate" && top10ByRate.includes(d.county_state)) return "bar highlight-rate";
+            else return "bar";
+          })
+      );
+
+      // Filter data for labels: for "crime_total" show original top 10; for "crime_rate" show both sets.
+      const labelData = sorted.filter(d =>
+        top10ByTotal.includes(d.county_state) ||
+        (metric === "crime_rate" && top10ByRate.includes(d.county_state))
+      );
+      const labels = g.selectAll("text.label")
+        .data(labelData, d => d.county_state + '-' + metric);
+      labels.join(
+        enter => enter.append("text")
+          .attr("class", "label")
+          .attr("text-anchor", "start")
+          .attr("x", d => x(d[metric]) + 5)
+          .attr("y", d => y(d.county_state) + y.bandwidth() / 2 + 5)
+          .style("opacity", 0)
+          .text(d => d.county_state)
+          .transition().duration(800)
+          .style("opacity", 1),
+        update => update.transition().duration(800)
+          .attr("x", d => x(d[metric]) + 5)
+          .attr("y", d => y(d.county_state) + y.bandwidth() / 2 + 5),
+        exit => exit.transition().duration(300).style("opacity", 0).remove()
+      );
+
+      // Update the x-axis and axis label.
+      const axis = d3.axisBottom(x).ticks(5);
+      xAxisGroup.transition().duration(1000).call(axis);
+      xLabel.text(metric === "crime_total" ? "Total Asian hate crime" : "Hate crime rate per 10k Asian population");
+    }
+  </script>
+</body>
+</html>
