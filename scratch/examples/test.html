@@ -89,6 +89,10 @@
         <h2>Second Story: Per Capita Rates</h2>
         <p>Adjusted for Asian population size, revealing disproportionate impacts</p>
       </div>
+      <div class="step">
+        <h2>Third Story: Where Hate Happens</h2>
+        <p>Anti-Asian hate crimes are more likely to occur in public spaces than intimate ones.</p>
+      </div>
     </div>
     <div id="graphic">
       <svg></svg>
@@ -212,6 +216,88 @@
       scroller.setup({ step: ".step", offset: 0.5 })
         .onStepEnter(response => transitionTo(response.index));
     });
+
+    d3.csv("location_distribution.csv").then(data => {
+      const categories = ["Residence", "School", "Commercial", "Road", "Other"];
+      const races = ["Anti-Asian", "Anti-Black", "Anti-Hispanic"];
+
+      const barWidth = 600;
+      const barHeight = 400;
+      const margin = { top: 50, right: 30, bottom: 60, left: 80 };
+
+      const svg = d3.select("#graphic")
+        .append("svg")
+        .attr("width", barWidth + margin.left + margin.right)
+        .attr("height", barHeight + margin.top + margin.bottom);
+
+      const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      const x0 = d3.scaleBand()
+        .domain(categories)
+        .range([0, barWidth])
+        .paddingInner(0.1);
+
+      const x1 = d3.scaleBand()
+        .domain(races)
+        .range([0, x0.bandwidth()])
+        .padding(0.05);
+
+      const y = d3.scaleLinear()
+        .domain([0, 100])
+        .range([barHeight, 0]);
+
+      const color = d3.scaleOrdinal()
+        .domain(races)
+        .range(["#f28e2c", "#4e79a7", "#59a14f"]); // Orange, Blue, Green
+
+      // 描画
+      g.append("g")
+        .selectAll("g")
+        .data(categories)
+        .join("g")
+        .attr("transform", d => `translate(${x0(d)},0)`)
+        .selectAll("rect")
+        .data(d => data.map(row => ({ category: d, race: row.Race, value: +row[d] })))
+        .join("rect")
+        .attr("x", d => x1(d.race))
+        .attr("y", d => y(d.value))
+        .attr("width", x1.bandwidth())
+        .attr("height", d => barHeight - y(d.value))
+        .attr("fill", d => color(d.race));
+
+      // 軸
+      g.append("g")
+        .attr("transform", `translate(0,${barHeight})`)
+        .call(d3.axisBottom(x0));
+
+      g.append("g")
+        .call(d3.axisLeft(y).ticks(10).tickFormat(d => `${d}%`));
+
+      // タイトル
+      svg.append("text")
+        .attr("x", (barWidth + margin.left + margin.right) / 2)
+        .attr("y", 30)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("Where Hate Happens: Comparing Locations by Targeted Group");
+
+      // 凡例
+      const legend = svg.append("g")
+        .attr("transform", `translate(${margin.left + barWidth - 10},${margin.top})`);
+
+      races.forEach((race, i) => {
+        const legendRow = legend.append("g").attr("transform", `translate(0, ${i * 20})`);
+        legendRow.append("rect").attr("width", 12).attr("height", 12).attr("fill", color(race));
+        legendRow.append("text")
+          .attr("x", -10)
+          .attr("y", 10)
+          .attr("text-anchor", "end")
+          .style("font-size", "12px")
+          .text(race);
+      });
+    });
+
   </script>
 </body>
 </html>
