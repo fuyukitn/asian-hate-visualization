@@ -56,6 +56,21 @@
       ["50","VT"], ["51","VA"], ["53","WA"], ["54","WV"], ["55","WI"],
       ["56","WY"]
     ]);
+
+    const idToStateName = new Map([
+        ["01", "Alabama"], ["02", "Alaska"], ["04", "Arizona"], ["05", "Arkansas"], ["06", "California"],
+        ["08", "Colorado"], ["09", "Connecticut"], ["10", "Delaware"], ["11", "District of Columbia"], ["12", "Florida"],
+        ["13", "Georgia"], ["15", "Hawaii"], ["16", "Idaho"], ["17", "Illinois"], ["18", "Indiana"],
+        ["19", "Iowa"], ["20", "Kansas"], ["21", "Kentucky"], ["22", "Louisiana"], ["23", "Maine"],
+        ["24", "Maryland"], ["25", "Massachusetts"], ["26", "Michigan"], ["27", "Minnesota"], ["28", "Mississippi"],
+        ["29", "Missouri"], ["30", "Montana"], ["31", "Nebraska"], ["32", "Nevada"], ["33", "New Hampshire"],
+        ["34", "New Jersey"], ["35", "New Mexico"], ["36", "New York"], ["37", "North Carolina"], ["38", "North Dakota"],
+        ["39", "Ohio"], ["40", "Oklahoma"], ["41", "Oregon"], ["42", "Pennsylvania"], ["44", "Rhode Island"],
+        ["45", "South Carolina"], ["46", "South Dakota"], ["47", "Tennessee"], ["48", "Texas"], ["49", "Utah"],
+        ["50", "Vermont"], ["51", "Virginia"], ["53", "Washington"], ["54", "West Virginia"], ["55", "Wisconsin"],
+        ["56", "Wyoming"]
+      ]);
+      
   
     // Draw states
     gStates.selectAll(".state")
@@ -123,7 +138,6 @@
     }
   
     function renderMap(metric) {
-      console.log("renderMap =>", metric);
       // domain
       const vals = data.map(d => d[metric]).filter(x => x!=null && !isNaN(x));
       color.domain(d3.extent(vals));
@@ -131,18 +145,20 @@
   
       gStates.selectAll(".state")
         .on("mousemove", (event, d) => {
-          const abbrev = idToAbbrev.get(d.id);
-          const row = crimeMap.get(abbrev);
-          const val = row ? row[metric] : null;
-          const label = (metric === "cr_asian")
-            ? `Total: ${val}`
-            : `Rate: ${val}`;
-  
-          tooltip
-            .style("display","block")
-            .style("left",(event.pageX+8)+"px")
-            .style("top",(event.pageY-24)+"px")
-            .html(`<strong>${abbrev}</strong><br>${label}`);
+            const abbrev = idToAbbrev.get(d.id);
+            const fullName = idToStateName.get(d.id) || abbrev;
+            const row = crimeMap.get(abbrev);
+            const val = row ? row[metric] : null;
+            const label = (metric === "cr_asian")
+              ? `Total: ${val}`
+              : `Rate: ${val}`;
+            
+            tooltip
+              .style("display", "block")
+              .style("left", (event.pageX + 8) + "px")
+              .style("top", (event.pageY - 24) + "px")
+              .html(`<strong>${fullName}</strong><br>${label}`);
+            
         })
         .on("mouseout", () => {
           tooltip.style("display","none");
@@ -161,14 +177,12 @@
      * 3) Zoom Functions
      ************************************************************/
     function zoomOut() {
-      console.log("zoomOut => entire US");
       svg.transition()
         .duration(750)
         .call( zoom.transform, d3.zoomIdentity );
     }
   
     function zoomToMEVT() {
-      console.log("zoomTo => Maine + Vermont");
       const statesWanted = ["ME","VT"];
       const features = statesGeo.features.filter(f => {
         const ab = idToAbbrev.get(f.id);
@@ -198,48 +212,42 @@
      * 4) IntersectionObserver => Steps 1,2,3
      ************************************************************/
     const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px', 
-      threshold: 0
-    };
-  
-    function onStepEnter(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const stepNum = entry.target.getAttribute("data-step");
-          console.log("Step =>", stepNum);
-  
-          // Remove or add .full-height on #map as needed
-          if (stepNum === "3") {
-            d3.select("#map").classed("full-height", true);
-          } else {
-            d3.select("#map").classed("full-height", false);
+        root: null,
+        rootMargin: '-50% 0px -50% 0px', 
+        threshold: 0
+      };
+    
+      function onStepEnter(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stepNum = entry.target.getAttribute("data-step");
+      
+            if (stepNum === "5") {
+              renderMap("cr_asian");
+              zoomOut();
+            }
+            else if (stepNum === "6") {
+              renderMap("rate_asian");
+              zoomOut();
+            }
+            else if (stepNum === "7") {
+              renderMap("rate_asian");
+              zoomToMEVT();
+            }
           }
-  
-          if (stepNum === "1") {
-            // Step 1 => total, unzoom
-            renderMap("cr_asian");
-            zoomOut();
-          }
-          else if (stepNum === "2") {
-            // Step 2 => rate, unzoom
-            renderMap("rate_asian");
-            zoomOut();
-          }
-          else if (stepNum === "3") {
-            // Step 3 => rate, zoom to ME/VT, and set map height=100vh
-            renderMap("rate_asian");
-            zoomToMEVT();
-          }
+        });
+      }
+    
+      const observer = new IntersectionObserver(onStepEnter, observerOptions);
+      document.querySelectorAll(".step").forEach(s => {
+        const stepNum = s.getAttribute("data-step");
+        if (stepNum === "5" || stepNum === "6" || stepNum === "7") {
+          observer.observe(s);
         }
       });
-    }
-  
-    const observer = new IntersectionObserver(onStepEnter, observerOptions);
-    document.querySelectorAll(".step").forEach(s => observer.observe(s));
-  
-    // Initial => Step 1 (cr_asian, unzoom)
-    renderMap("cr_asian");
-    zoomOut();
-  })();
+    
+      // Initial render
+      renderMap("cr_asian");
+      zoomOut();
+    })();
   

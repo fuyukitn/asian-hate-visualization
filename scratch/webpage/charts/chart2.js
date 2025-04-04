@@ -61,10 +61,10 @@ window.renderChart2 = function(parentSelector = "#chart2") {
   
       // Title
       svg.append("text")
-        .attr("x", width / 2)
+      .attr("class", "axis-label")
+      .attr("x", width / 2)
         .attr("y", -40)
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
         .text("Distribution of Hate Crime Offenses per Bias Type");
   
       // Ordinal color scale

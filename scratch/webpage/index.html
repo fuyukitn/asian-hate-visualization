@@ -3,28 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Three-Step Scrollytelling + Full-Fill + Dynamic Height + Padding</title>
+  <title>Full Map + Floating Scrollytelling</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- D3 + TopoJSON -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://d3js.org/topojson.v3.min.js"></script>
 </head>
 <body>
+  <div id="mapContainer">
+    <div id="map"></div>
+    <div id="legend"></div>
+  </div>
 
-  <div id="container">
-
-    <!-- LEFT COLUMN => pinned map -->
-    <div class="left">
-      <div id="mapContainer">
-        <div id="map"></div>
-        <div id="legend"></div>
-      </div>
-    </div>
-
-    <!-- RIGHT COLUMN => three steps -->
-    <div class="right">
-      
-      <section class="step" data-step="1">
+  <div class="scroll-overlay">
+    <section class="step" data-step="1">
+        <div class="step-content">
         <h2>Where Anti-Asian Hate Crimes Are Most Common in Total Numbers</h2>
         <p>
             This map shows the total number of reported anti-Asian hate crime incidents by state. 
@@ -34,9 +26,11 @@
             However, this map does not account for differences in population size between states, 
             which can obscure the relative risk faced by individuals.
         </p>
-      </section>
+        </div>
+    </section>
 
-      <section class="step" data-step="2">
+    <section class="step" data-step="2">
+        <div class="step-content">
         <h2>Where Asian Americans Face the Highest Risk of Hate — Per Capita</h2>
         <p>
             This map adjusts for population size, showing the rate of anti-Asian hate crimes per 
@@ -46,15 +40,18 @@
             communities can experience disproportionately high levels of hate relative to their size 
             — and how raw totals can hide such vulnerability.
         </p>
+        </div>
       </section>
 
       <section class="step" data-step="3">
+        <div class="step-content">
         <h2>A Closer Look: Maine and Vermont</h2>
         <p>
             Maine and Vermont stand out not because they have high absolute numbers of anti-Asian hate crimes, but because they have very small Asian populations. In states where just a few thousand Asian residents live, even a handful of hate incidents significantly raise the per capita rate. For example, three or four incidents in a state with 10,000 Asian residents equates to a rate of 30–40 per 100,000 — much higher than ten times that number of incidents in a state with a million residents.
 
             This elevated per capita rate may reflect a heightened vulnerability in states where Asian Americans are especially visible due to their small numbers. In such environments, cultural isolation and lack of institutional support may intensify both the likelihood of being targeted and the consequences of each incident. At the same time, the high per capita values might also reflect better local reporting or isolated spikes in individual years, which can distort trends when populations are small — making these states important to flag, but also to interpret with care.
         </p>
+        </div>
       </section>
 
     </div>
