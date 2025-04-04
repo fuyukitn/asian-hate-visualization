@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti-Asian Hate Acts Transition</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    #container {
+      display: flex;
+      height: 100vh;
+    }
+    #scrolly {
+      width: 40%;
+      overflow-y: scroll;
+      padding: 60px 30px;
+      background: #f7f7f7;
+    }
+    .step {
+      margin-bottom: 100vh;
+      min-height: 60vh;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    #graphic {
+      width: 60%;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    circle {
+      fill: steelblue;
+      opacity: 0.85;
+    }
+    text.label {
+      font-size: 11px;
+      fill: #444;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #aaa;
+      shape-rendering: crispEdges;
+    }
+    .trend-line {
+      stroke: gray;
+      stroke-dasharray: 4;
+      stroke-width: 2;
+      opacity: 0;
+    }
+    .tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="scrolly">
+      <div class="step">
+        <h2>First Story: Total Hate Acts</h2>
+        <p>Showing raw counts of anti-Asian hate acts by county (2020-2023)</p>
+      </div>
+      <div class="step">
+        <h2>Second Story: Per Capita Rates</h2>
+        <p>Adjusted for Asian population size, revealing disproportionate impacts</p>
+      </div>
+      <div class="step">
+        <h2>Third Story: Where Hate Happens</h2>
+        <p>Anti-Asian hate crimes are more likely to occur in public spaces than intimate ones.</p>
+      </div>
+    </div>
+    <div id="graphic">
+      <svg></svg>
+    </div>
+  </div>
+  <div class="tooltip" id="tooltip"></div>
+
+  <script>
+    const svg = d3.select("svg");
+    const tooltip = d3.select("#tooltip");
+
+    const width = 800, height = 600;
+    const margin = { top: 50, right: 80, bottom: 60, left: 80 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    svg.attr("viewBox", `0 0 ${width} ${height}`);
+    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    let circles, xAxisG, yAxisG, trendLine;
+
+    d3.csv("asian_animated.csv").then(data => {
+      data.forEach(d => {
+        d.x1 = +d.x1; d.y1 = +d.y1; d.x2 = +d.x2; d.y2 = +d.y2;
+        d.crime_total = +d.crime_total;
+        d.crime_rate = +d.crime_rate;
+      });
+
+      const x1Scale = d3.scaleLinear().domain(d3.extent(data, d => d.x1)).range([0, innerWidth]);
+      const y1Scale = d3.scaleLinear().domain(d3.extent(data, d => d.y1)).range([innerHeight, 0]);
+      const x2Scale = d3.scaleLinear().domain(d3.extent(data, d => d.x2)).range([0, innerWidth]);
+      const y2Scale = d3.scaleLinear().domain(d3.extent(data, d => d.y2)).range([innerHeight, 0]);
+
+      const xMean = d3.mean(data, d => d.x2);
+      const yMean = d3.mean(data, d => d.y2);
+      const slope = d3.sum(data, d => (d.x2 - xMean) * (d.y2 - yMean)) / d3.sum(data, d => Math.pow(d.x2 - xMean, 2));
+      const intercept = yMean - slope * xMean;
+
+      trendLine = g.append("line")
+        .attr("class", "trend-line");
+
+      xAxisG = g.append("g").attr("class", "axis").attr("transform", `translate(0,${innerHeight})`);
+      yAxisG = g.append("g").attr("class", "axis");
+
+      g.append("text")
+        .attr("class", "x label")
+        .attr("id", "x-label")
+        .attr("text-anchor", "middle")
+        .attr("x", innerWidth / 2)
+        .attr("y", innerHeight + 50)
+        .text("Counties sorted by hate crime volume (left to right)");
+
+      g.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "middle")
+        .attr("x", -innerHeight / 2)
+        .attr("y", -50)
+        .attr("transform", "rotate(-90)")
+        .text("Hate Acts per 10,000 Residents (log scale)");
+
+      circles = g.selectAll("circle")
+        .data(data)
+        .join("circle")
+        .attr("r", 5)
+        .attr("cx", d => x1Scale(d.x1))
+        .attr("cy", d => y1Scale(d.y1))
+        .on("mouseover", (event, d) => showTooltip(0, event, d))
+        .on("mouseout", () => tooltip.transition().style("opacity", 0));
+
+      xAxisG.call(d3.axisBottom(x1Scale));
+      yAxisG.call(d3.axisLeft(y1Scale));
+
+      function showTooltip(step, event, d) {
+        let html = `<strong>${d.county_state}</strong><br>Total: ${d.crime_total}`;
+        if (step === 1) html += `<br>Rate: ${d.crime_rate}`;
+
+        tooltip.transition().style("opacity", 1);
+        tooltip.html(html)
+          .style("left", `${event.pageX + 10}px`)
+          .style("top", `${event.pageY - 28}px`);
+      }
+
+      function transitionTo(step) {
+        const isSecond = step === 1;
+
+        circles.transition()
+          .duration(1000)
+          .ease(d3.easeCubic)
+          .delay((d, i) => i * 2)
+          .attr("cx", d => isSecond ? x2Scale(d.x2) : x1Scale(d.x1))
+          .attr("cy", d => isSecond ? y2Scale(d.y2) : y1Scale(d.y1))
+          .on("start", function(event, d) {
+            d3.select(this)
+              .on("mouseover", (event, d) => showTooltip(step, event, d))
+              .on("mouseout", () => tooltip.transition().style("opacity", 0));
+          });
+
+        xAxisG.transition()
+          .duration(600)
+          .ease(d3.easeLinear)
+          .call(isSecond ? d3.axisBottom(x2Scale) : d3.axisBottom(x1Scale).tickValues([]));
+
+        yAxisG.transition()
+          .duration(600)
+          .ease(d3.easeLinear)
+          .call(d3.axisLeft(isSecond ? y2Scale : y1Scale));
+
+        d3.select("#x-label")
+          .text(isSecond ? "Total Hate Acts (log scale)" : "Counties sorted by hate crime volume (left to right)");
+
+        trendLine.transition()
+          .duration(1000)
+          .style("opacity", isSecond ? 1 : 0)
+          .attr("x1", x2Scale(d3.min(data, d => d.x2)))
+          .attr("y1", y2Scale(slope * d3.min(data, d => d.x2) + intercept))
+          .attr("x2", x2Scale(d3.max(data, d => d.x2)))
+          .attr("y2", y2Scale(slope * d3.max(data, d => d.x2) + intercept));
+      }
+
+      const scroller = scrollama();
+      scroller.setup({ step: ".step", offset: 0.5 })
+        .onStepEnter(response => transitionTo(response.index));
+    });
+
+    d3.csv("location_distribution.csv").then(data => {
+      const categories = ["Residence", "School", "Commercial", "Road", "Other"];
+      const races = ["Anti-Asian", "Anti-Black", "Anti-Hispanic"];
+
+      const barWidth = 600;
+      const barHeight = 400;
+      const margin = { top: 50, right: 30, bottom: 60, left: 80 };
+
+      const svg = d3.select("#graphic")
+        .append("svg")
+        .attr("width", barWidth + margin.left + margin.right)
+        .attr("height", barHeight + margin.top + margin.bottom);
+
+      const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      const x0 = d3.scaleBand()
+        .domain(categories)
+        .range([0, barWidth])
+        .paddingInner(0.1);
+
+      const x1 = d3.scaleBand()
+        .domain(races)
+        .range([0, x0.bandwidth()])
+        .padding(0.05);
+
+      const y = d3.scaleLinear()
+        .domain([0, 100])
+        .range([barHeight, 0]);
+
+      const color = d3.scaleOrdinal()
+        .domain(races)
+        .range(["#f28e2c", "#4e79a7", "#59a14f"]); // Orange, Blue, Green
+
+      // 描画
+      g.append("g")
+        .selectAll("g")
+        .data(categories)
+        .join("g")
+        .attr("transform", d => `translate(${x0(d)},0)`)
+        .selectAll("rect")
+        .data(d => data.map(row => ({ category: d, race: row.Race, value: +row[d] })))
+        .join("rect")
+        .attr("x", d => x1(d.race))
+        .attr("y", d => y(d.value))
+        .attr("width", x1.bandwidth())
+        .attr("height", d => barHeight - y(d.value))
+        .attr("fill", d => color(d.race));
+
+      // 軸
+      g.append("g")
+        .attr("transform", `translate(0,${barHeight})`)
+        .call(d3.axisBottom(x0));
+
+      g.append("g")
+        .call(d3.axisLeft(y).ticks(10).tickFormat(d => `${d}%`));
+
+      // タイトル
+      svg.append("text")
+        .attr("x", (barWidth + margin.left + margin.right) / 2)
+        .attr("y", 30)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("Where Hate Happens: Comparing Locations by Targeted Group");
+
+      // 凡例
+      const legend = svg.append("g")
+        .attr("transform", `translate(${margin.left + barWidth - 10},${margin.top})`);
+
+      races.forEach((race, i) => {
+        const legendRow = legend.append("g").attr("transform", `translate(0, ${i * 20})`);
+        legendRow.append("rect").attr("width", 12).attr("height", 12).attr("fill", color(race));
+        legendRow.append("text")
+          .attr("x", -10)
+          .attr("y", 10)
+          .attr("text-anchor", "end")
+          .style("font-size", "12px")
+          .text(race);
+      });
+    });
+
+  </script>
+</body>
+</html>
