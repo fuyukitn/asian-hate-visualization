@@ -1,15 +1,19 @@
 
 /* === Additional styles merged  === */
-// Select the main SVG element and tooltip/message overlays
-const svg = d3.select("svg")
-const tooltip = d3.select("#tooltip");
-const message = document.getElementById("message-overlay");
-
 // Define the canvas dimensions and margins
 const width = 800, height = 600;
 const margin = { top: 60, right: 30, bottom: 80, left: 80 };
 const barWidth = width - margin.left - margin.right;
 const barHeight = height - margin.top - margin.bottom;
+
+// Select the main SVG element and tooltip/message overlays
+const svg = d3.select("svg")
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("preserveAspectRatio", "xMidYMid meet")
+  .style("width", "80%")
+  .style("height", "80%");
+const tooltip = d3.select("#tooltip");
+const message = document.getElementById("message-overlay");
 
 // Define race categories used across charts
 const races = ["Anti-Black", "Anti-Asian", "Anti-Hispanic"];

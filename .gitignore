@@ -1,2 +1,7 @@
 scratch/webpage/data/.RData
 scratch/webpage/data/.Rhistory
+
+# Large Data File
+rawdata/
+scratch/201[5-9]-03.csv
+scratch/202[0-3]-03.csv
