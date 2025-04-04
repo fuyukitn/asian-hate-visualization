@@ -1,5 +1,5 @@
 // chart5.js — X-axis: white/non-white, legend: hate crime type
-window.renderChart5 = function(parentSelector = "#chart5") {
+window.renderChart5 = function(parentSelector = "#chartContainer") {
     d3.csv("data/offender.csv").then(function(data) {
       const raceGroups = ["white", "non-white"];
       const biasTypes = ["Anti-Asian", "Anti-Black", "Anti-Hispanic"];
@@ -71,11 +71,15 @@ window.renderChart5 = function(parentSelector = "#chart5") {
         .domain(biasTypes)
         .range(["#ff5252", "#9e9e9e", "#757575"]);
   
-      // Tooltip
-      const tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+      // Tooltip: check if one exists, otherwise create it.
+      let tooltip = d3.select("body").select(".tooltip");
+      if (tooltip.empty()) {
+        tooltip = d3.select("body")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0)
+          .style("display", "none");
+      }
   
       // Bars
       svg.append("g")
@@ -96,12 +100,19 @@ window.renderChart5 = function(parentSelector = "#chart5") {
         .attr("height", d => isNaN(d.value) ? 0 : height - y(d.value))
         .attr("fill", d => color(d.bias))
         .on("mouseover", (event, d) => {
-          tooltip.transition().duration(200).style("opacity", 0.9);
+          tooltip
+            .style("display", "block")
+            .transition().duration(200).style("opacity", 0.9);
           tooltip.html(`<strong>${d.race}</strong><br>${d.bias}: ${d.value.toFixed(1)}%`)
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", () => tooltip.transition().duration(500).style("opacity", 0));
+        .on("mouseout", () => {
+          tooltip.transition()
+            .duration(500)
+            .style("opacity", 0)
+            .on("end", () => tooltip.style("display", "none"));
+        });
   
       // Axes
       svg.append("g")

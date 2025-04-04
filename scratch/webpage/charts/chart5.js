@@ -96,12 +96,14 @@ window.renderChart5 = function(parentSelector = "#chart5") {
         .attr("height", d => isNaN(d.value) ? 0 : height - y(d.value))
         .attr("fill", d => color(d.bias))
         .on("mouseover", (event, d) => {
-          tooltip.transition().duration(200).style("opacity", 0.9);
+          tooltip
+            .style("display", "block")
+            .transition().duration(200).style("opacity", 0.9);
           tooltip.html(`<strong>${d.race}</strong><br>${d.bias}: ${d.value.toFixed(1)}%`)
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", () => tooltip.transition().duration(500).style("opacity", 0));
+        .on("mouseout", () => tooltip.style("display", "none").transition().duration(500).style("opacity", 0));
   
       // Axes
       svg.append("g")

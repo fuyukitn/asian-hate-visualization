@@ -128,6 +128,7 @@ window.renderChart4 = function(parentSelector = "#chart4") {
           .attr("fill", d => color(d.sex))
           .on("mouseover", function(event, d) {
             tooltip
+              .style("display", "block")
               .transition()
               .duration(200)
               .style("opacity", 0.9);
@@ -139,7 +140,7 @@ window.renderChart4 = function(parentSelector = "#chart4") {
               .style("top", (event.pageY - 28) + "px");
           })
           .on("mouseout", function () {
-            tooltip.transition().duration(500).style("opacity", 0);
+            tooltip.style("display", "none").transition().duration(500).style("opacity", 0);
           });
 
     // Add error bars

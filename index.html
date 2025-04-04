@@ -194,34 +194,55 @@
 
   <!-- Scroll Logic for Offender Charts -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const chartContainer = document.getElementById('chartContainer');
-      const chartGraphic = document.getElementById('chartGraphic');
-      const steps = document.querySelectorAll('.step');
-  
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const stepNum = +entry.target.dataset.step;
-  
-            // Render the charts during steps 1–4
-            if (stepNum === 1 && window.renderChart2) window.renderChart2('#chartContainer');
-            else if (stepNum === 2 && window.renderChart4) window.renderChart4('#chartContainer');
-            else if (stepNum === 3 && window.renderChart5) window.renderChart5('#chartContainer');
-            else if (stepNum === 4 && window.renderChart6) window.renderChart6('#chartContainer');
-  
-            // Show/hide chart area
-            if (stepNum >= 1 && stepNum <= 4) {
-              chartGraphic.style.display = 'flex';
-            } else {
-              chartGraphic.style.display = 'none';
-            }
-          }
-        });
-      }, { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-  
-      steps.forEach(step => observer.observe(step));
+document.addEventListener('DOMContentLoaded', function () {
+  const chartContainer = document.getElementById('chartContainer');
+  const chartGraphic = document.getElementById('chartGraphic');
+  const steps = document.querySelectorAll('.step');
+  const heroTransition = document.getElementById('hero-transition');
+
+  // Flag to track whether #hero-transition is in view.
+  let heroInView = false;
+
+  // Observer to toggle offender charts based on hero-transition visibility.
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      heroInView = entry.isIntersecting;
+      if (heroInView) {
+        // Hide offender charts when hero is visible.
+        chartGraphic.style.display = 'none';
+        chartContainer.innerHTML = '';
+      }
     });
+  }, { threshold: 0.5 }); // Adjust threshold as needed.
+  heroObserver.observe(heroTransition);
+
+  // Observer for the .step elements.
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const stepNum = +entry.target.dataset.step;
+        // Only render charts if the hero section is not visible.
+        if (!heroInView) {
+          // Render the offender charts during steps 1–4.
+          if (stepNum === 1 && window.renderChart2) window.renderChart2('#chartContainer');
+          else if (stepNum === 2 && window.renderChart4) window.renderChart4('#chartContainer');
+          else if (stepNum === 3 && window.renderChart5) window.renderChart5('#chartContainer');
+          else if (stepNum === 4 && window.renderChart6) window.renderChart6('#chartContainer');
+
+          // Show offender chart area only during steps 1–4.
+          if (stepNum >= 1 && stepNum <= 4) {
+            chartGraphic.style.display = 'flex';
+          } else {
+            chartGraphic.style.display = 'none';
+            chartContainer.innerHTML = '';
+          }
+        }
+      }
+    });
+  }, { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+
+  steps.forEach(step => stepObserver.observe(step));
+});
   </script>
   
 

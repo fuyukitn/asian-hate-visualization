@@ -115,6 +115,7 @@ window.renderChart2 = function(parentSelector = "#chart2") {
           .attr("fill", d => color(d.key))
           .on("mouseover", function (event, d) {
             tooltip
+              .style("display", "block")
               .transition()
               .duration(200)
               .style("opacity", 0.9);
@@ -126,7 +127,7 @@ window.renderChart2 = function(parentSelector = "#chart2") {
               .style("top", (event.pageY - 28) + "px");
           })
           .on("mouseout", function () {
-            tooltip.transition().duration(500).style("opacity", 0);
+            tooltip.style("display", "none").transition().duration(500).style("opacity", 0);
           });
   
       // X-axis

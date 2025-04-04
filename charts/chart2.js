@@ -1,7 +1,7 @@
 // chart2.js
 // Rewritten version that defines window.renderChart2(...) instead of invoking immediately.
 
-window.renderChart2 = function(parentSelector = "#chart2") {
+window.renderChart2 = function(parentSelector = "#chartContainer") {
     d3.csv("data/offender.csv").then(function (raw) {
       // Define which bias types and offense categories we care about
       const biasTypes = ["Anti-Asian", "Anti-Black", "Anti-Hispanic"];
@@ -61,8 +61,8 @@ window.renderChart2 = function(parentSelector = "#chart2") {
   
       // Title
       svg.append("text")
-      .attr("class", "axis-label")
-      .attr("x", width / 2)
+        .attr("class", "axis-label")
+        .attr("x", width / 2)
         .attr("y", -40)
         .attr("text-anchor", "middle")
         .text("Distribution of Hate Crime Offenses per Bias Type");
@@ -89,11 +89,15 @@ window.renderChart2 = function(parentSelector = "#chart2") {
         .nice()
         .rangeRound([height, 0]);
   
-      // Tooltip
-      const tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+      // Tooltip: check if one exists, otherwise create it.
+      let tooltip = d3.select("body").select(".tooltip");
+      if (tooltip.empty()) {
+        tooltip = d3.select("body")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0)
+          .style("display", "none");
+      }
   
       // Draw grouped bars
       svg.append("g")
@@ -115,6 +119,7 @@ window.renderChart2 = function(parentSelector = "#chart2") {
           .attr("fill", d => color(d.key))
           .on("mouseover", function (event, d) {
             tooltip
+              .style("display", "block")
               .transition()
               .duration(200)
               .style("opacity", 0.9);
@@ -126,7 +131,11 @@ window.renderChart2 = function(parentSelector = "#chart2") {
               .style("top", (event.pageY - 28) + "px");
           })
           .on("mouseout", function () {
-            tooltip.transition().duration(500).style("opacity", 0);
+            tooltip
+              .transition()
+              .duration(500)
+              .style("opacity", 0)
+              .on("end", () => tooltip.style("display", "none"));
           });
   
       // X-axis

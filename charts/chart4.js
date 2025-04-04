@@ -1,7 +1,7 @@
 // chart4.js
 // Rewritten version. Instead of an IIFE, it exposes window.renderChart4(...).
 
-window.renderChart4 = function(parentSelector = "#chart4") {
+window.renderChart4 = function(parentSelector = "#chartContainer") {
     d3.csv("data/offender.csv").then(function(raw) {
       const biasTypes = ["Anti-Asian", "Anti-Black", "Anti-Hispanic"];
   
@@ -43,9 +43,7 @@ window.renderChart4 = function(parentSelector = "#chart4") {
         d => d.hate_crime.trim()
       );
       
-  
-      // Flatten that structure into an array
-      // e.g. [ { hate_crime: "Anti-Asian", Male: 60, Female: 40 }, ...]
+      // Flatten the structure into an array
       const data = grouped.map(([hate_crime, { percentages, se }]) => {
         const out = { hate_crime };
         sexTypes.forEach(s => {
@@ -55,23 +53,22 @@ window.renderChart4 = function(parentSelector = "#chart4") {
         return out;
       });
       
-  
       // Dimensions
       const margin = { top: 70, right: 150, bottom: 80, left: 80 },
             width = 800 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
-  
+      
       // Container
       const container = d3.select(parentSelector);
       container.selectAll("svg").remove();
-  
+      
       const svg = container
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+      
       // Title
       svg.append("text")
         .attr("class", "chart-title")
@@ -79,35 +76,39 @@ window.renderChart4 = function(parentSelector = "#chart4") {
         .attr("y", -40)
         .attr("text-anchor", "middle")
         .text("Percentage of Offender Sex by Hate Crime Type");
-  
+      
       // Ordinal color scale for sexes
       const color = d3.scaleOrdinal()
         .domain(sexTypes)
         .range(["#ff5252", "#9e9e9e"]);
-  
+      
       // X scales
       const x0 = d3.scaleBand()
         .domain(biasTypes)
         .rangeRound([0, width])
         .paddingInner(0.2);
-  
+      
       const x1 = d3.scaleBand()
         .domain(sexTypes)
         .rangeRound([0, x0.bandwidth()])
         .padding(0.05);
-  
+      
       // Y scale
       const y = d3.scaleLinear()
         .domain([0, 100])
         .nice()
         .range([height, 0]);
-  
-      // Tooltip
-      const tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
-  
+      
+      // Tooltip: check if one exists, otherwise create it.
+      let tooltip = d3.select("body").select(".tooltip");
+      if (tooltip.empty()) {
+        tooltip = d3.select("body")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0)
+          .style("display", "none");
+      }
+      
       // Draw grouped bars
       svg.append("g")
         .selectAll("g")
@@ -128,6 +129,7 @@ window.renderChart4 = function(parentSelector = "#chart4") {
           .attr("fill", d => color(d.sex))
           .on("mouseover", function(event, d) {
             tooltip
+              .style("display", "block")
               .transition()
               .duration(200)
               .style("opacity", 0.9);
@@ -139,39 +141,41 @@ window.renderChart4 = function(parentSelector = "#chart4") {
               .style("top", (event.pageY - 28) + "px");
           })
           .on("mouseout", function () {
-            tooltip.transition().duration(500).style("opacity", 0);
+            tooltip.transition()
+              .duration(500)
+              .style("opacity", 0)
+              .on("end", () => tooltip.style("display", "none"));
           });
-
-    // Add error bars
-svg.append("g")
-.selectAll("g")
-.data(data)
-.join("g")
-.attr("transform", d => `translate(${x0(d.hate_crime)},0)`)
-.selectAll("line")
-.data(d => sexTypes.map(sex => ({
-  sex,
-  value: d[sex],
-  se: d[sex + "_se"],
-  type: d.hate_crime
-})))
-.join("line")
-  .attr("x1", d => x1(d.sex) + x1.bandwidth() / 2)
-  .attr("x2", d => x1(d.sex) + x1.bandwidth() / 2)
-  .attr("y1", d => y(d.value - d.se))
-  .attr("y2", d => y(d.value + d.se))
-  .attr("stroke", "black")
-  .attr("stroke-width", 1.5);
-
-  
+      
+      // Add error bars
+      svg.append("g")
+        .selectAll("g")
+        .data(data)
+        .join("g")
+        .attr("transform", d => `translate(${x0(d.hate_crime)},0)`)
+        .selectAll("line")
+        .data(d => sexTypes.map(sex => ({
+          sex,
+          value: d[sex],
+          se: d[sex + "_se"],
+          type: d.hate_crime
+        })))
+        .join("line")
+          .attr("x1", d => x1(d.sex) + x1.bandwidth() / 2)
+          .attr("x2", d => x1(d.sex) + x1.bandwidth() / 2)
+          .attr("y1", d => y(d.value - d.se))
+          .attr("y2", d => y(d.value + d.se))
+          .attr("stroke", "black")
+          .attr("stroke-width", 1.5);
+      
       // Axes
       svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x0));
-  
+      
       svg.append("g")
         .call(d3.axisLeft(y).tickFormat(d => d + "%"));
-  
+      
       // Y-axis label
       svg.append("text")
         .attr("class", "axis-label")
@@ -180,13 +184,13 @@ svg.append("g")
         .attr("x", -height / 2)
         .attr("text-anchor", "middle")
         .text("Percentage of Offenders");
-  
+      
       // Legend
       const legend = svg
         .append("g")
         .attr("class", "legend")
         .attr("transform", `translate(${width + 10}, 0)`);
-  
+      
       sexTypes.forEach((sex, i) => {
         const row = legend.append("g")
           .attr("transform", `translate(0, ${i * 20})`);

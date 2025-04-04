@@ -399,6 +399,7 @@ svg {
   opacity: 0;
   transition: opacity 0.2s;
   color: #000;
+  z-index: 9998;
 }
 
 text.race-label {

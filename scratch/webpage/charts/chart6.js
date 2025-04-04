@@ -29,8 +29,9 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
   
       const margin = { top: 40, right: 60, bottom: 40, left: 120 };
       const width = 800 - margin.left - margin.right;
-      const rowHeight = 100;  // increased height
-      const height = rowHeight * grouped.length;
+      const rowHeight = 100;
+      const rowSpacing = 20;
+      const height = rowHeight * grouped.length + rowSpacing * (grouped.length - 1);
   
       const container = d3.select(parentSelector);
       container.selectAll("svg").remove();
@@ -49,8 +50,13 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
         .domain([0, 0.3])
         .range([rowHeight, 0]);
   
-      // Draw each group
+      const tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+  
       grouped.forEach(([type, values], i) => {
+        const yOffset = i * (rowHeight + rowSpacing);
         const binCounts = d3.rollup(
           values,
           v => v.length,
@@ -65,14 +71,14 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
           return {
             bin: label,
             x: mid,
-            percent: count / total
+            percent: count / total,
+            count: count
           };
-        }).filter(d => d.percent > 0); // remove 0 values
+        }).filter(d => d.percent > 0);
   
         const row = svg.append("g")
-          .attr("transform", `translate(0, ${i * rowHeight})`);
+          .attr("transform", `translate(0, ${yOffset})`);
   
-        // Histogram bars
         row.selectAll("rect")
           .data(rowData)
           .join("rect")
@@ -83,9 +89,20 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
           .attr("fill", customColor(type))
           .attr("stroke", "#333")
           .attr("stroke-width", 0.3)
-          .attr("opacity", 0.85);
+          .attr("opacity", 0.85)
+          .on("mouseover", (event, d) => {
+            tooltip
+              .style("display", "block")
+              .transition().duration(200).style("opacity", 0.9);
+            tooltip
+              .html(`<strong>${type}</strong><br>Age: ${d.bin}<br>Count: ${d.count}<br>${(d.percent * 100).toFixed(1)}%`)
+              .style("left", (event.pageX + 10) + "px")
+              .style("top", (event.pageY - 28) + "px");
+          })
+          .on("mouseout", () => {
+            tooltip.style("display", "none").transition().duration(500).style("opacity", 0);
+          });
   
-        // Type label
         row.append("text")
           .attr("x", -10)
           .attr("y", rowHeight / 2)
@@ -95,7 +112,6 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
           .style("font-weight", "bold")
           .text(type);
   
-        // Y axis (percent scale) on the right of each row
         const yAxis = d3.axisRight(y)
           .ticks(3)
           .tickFormat(d3.format(".0%"));
@@ -107,12 +123,10 @@ window.renderChart6 = function(parentSelector = "#chartContainer") {
           .style("font-size", "10px");
       });
   
-      // X Axis once at the bottom
       svg.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x).ticks(10));
   
-      // Title
       svg.append("text")
         .attr("x", width / 2)
         .attr("y", -20)
