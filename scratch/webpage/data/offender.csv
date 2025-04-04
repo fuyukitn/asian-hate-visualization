@@ -766,7 +766,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 6/20/2023,WASHINGTON,DC,Anti-Hispanic,132,Violent Crimes,Male,White,35,NA,white
 7/5/2023,WASHINGTON,DC,Anti-Hispanic,132,Violent Crimes,Male,Black,38,On-View Arrest,non-white
 7/6/2023,WASHINGTON,DC,Anti-Black,132,Violent Crimes,Male,White,58,Taken into Custody,white
-7/7/2023,WASHINGTON,DC,Anti-Hispanic,114,Violent Crimes,Male,Black,27,NA,non-white
+7/7/2023,WASHINGTON,DC,Anti-Hispanic,114,Sex & Human Trafficking,Male,Black,27,NA,non-white
 8/16/2023,WASHINGTON,DC,Anti-Hispanic,234,Property Crimes,Male,Black,0,NA,non-white
 9/1/2023,WASHINGTON,DC,Anti-Black,131,Violent Crimes,Male,White,50,NA,white
 11/9/2023,WASHINGTON,DC,Anti-Hispanic,120,Violent Crimes,Male,Black,29,On-View Arrest,non-white
@@ -1152,7 +1152,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/3/2023,INDIANAPOLIS,IN,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 7/18/2023,BAXTER SPRINGS,KS,Anti-Black,132,Violent Crimes,Male,White,19,Taken into Custody,white
 7/6/2023,WINFIELD,KS,Anti-Hispanic,133,Violent Crimes,Male,White,59,On-View Arrest,white
-4/30/2023,LAWRENCE,KS,Anti-Asian,111,Violent Crimes,NA,NA,0,NA,NA
+4/30/2023,LAWRENCE,KS,Anti-Asian,111,Sex & Human Trafficking,NA,NA,0,NA,NA
 8/9/2023,DODGE CITY,KS,Anti-Hispanic,132,Violent Crimes,Male,Black,52,On-View Arrest,non-white
 6/29/2023,NEWTON,KS,Anti-Hispanic,131,Violent Crimes,Male,White,57,NA,white
 11/15/2023,SHAWNEE MISSION,KS,Anti-Black,131,Violent Crimes,Male,White,62,NA,white
@@ -1321,7 +1321,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 5/4/2023,CAMBRIDGE,MA,Anti-Hispanic,132,Violent Crimes,Female,Black,55,NA,non-white
 7/25/2023,CAMBRIDGE,MA,Anti-Asian,131,Violent Crimes,Male,Hispanic,44,Summoned,non-white
 7/27/2023,CAMBRIDGE,MA,Anti-Black,131,Violent Crimes,Female,White,35,NA,white
-8/4/2023,CAMBRIDGE,MA,Anti-Black,114,Violent Crimes,Female,White,51,NA,white
+8/4/2023,CAMBRIDGE,MA,Anti-Black,114,Sex & Human Trafficking,Female,White,51,NA,white
 8/12/2023,CAMBRIDGE,MA,Anti-Hispanic,133,Violent Crimes,Male,White,47,NA,white
 9/11/2023,CAMBRIDGE,MA,Anti-Hispanic,133,Violent Crimes,Male,White,77,NA,white
 10/11/2023,CAMBRIDGE,MA,Anti-Asian,133,Violent Crimes,Male,White,33,NA,white
@@ -1351,7 +1351,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/7/2023,MEDFORD,MA,Anti-Hispanic,132,Violent Crimes,NA,NA,NA,NA,NA
 10/13/2023,MEDFORD,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 11/18/2023,MEDFORD,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-3/9/2023,WEST NEWTON,MA,Anti-Black,114,Violent Crimes,Male,NA,12,NA,NA
+3/9/2023,WEST NEWTON,MA,Anti-Black,114,Sex & Human Trafficking,Male,NA,12,NA,NA
 4/7/2023,WEST NEWTON,MA,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 9/27/2023,WEST NEWTON,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 10/25/2023,WEST NEWTON,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
@@ -1613,7 +1613,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 4/14/2023,LAPEER,MI,Anti-Hispanic,133,Violent Crimes,NA,NA,NA,NA,NA
 11/25/2023,LAPEER,MI,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 9/18/2023,ADRIAN,MI,Anti-Black,133,Violent Crimes,Male,White,16,NA,white
-1/15/2023,ADRIAN,MI,Anti-Hispanic,112,Violent Crimes,Male,White,33,NA,white
+1/15/2023,ADRIAN,MI,Anti-Hispanic,112,Sex & Human Trafficking,Male,White,33,NA,white
 3/3/2023,FRASER,MI,Anti-Black,133,Violent Crimes,Female,White,46,NA,white
 10/16/2023,FRASER,MI,Anti-Black,133,Violent Crimes,Female,White,47,NA,white
 11/3/2023,ROSEVILLE,MI,Anti-Black,133,Violent Crimes,Female,Black,61,NA,non-white
@@ -1784,7 +1784,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/27/2023,SAINT PAUL,MN,Anti-Black,131,Violent Crimes,Male,White,55,NA,white
 2/18/2023,SAINT PAUL,MN,Anti-Black,133,Violent Crimes,Male,White,45,NA,white
 3/11/2023,SAINT PAUL,MN,Anti-Hispanic,132,Violent Crimes,Male,Black,0,NA,non-white
-4/24/2023,SAINT PAUL,MN,Anti-Black,114,Violent Crimes,Male,White,0,NA,white
+4/24/2023,SAINT PAUL,MN,Anti-Black,114,Sex & Human Trafficking,Male,White,0,NA,white
 5/27/2023,SAINT PAUL,MN,Anti-Asian,132,Violent Crimes,Male,White,0,NA,white
 6/7/2023,SAINT PAUL,MN,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 6/30/2023,SAINT PAUL,MN,Anti-Black,133,Violent Crimes,Female,White,27,NA,white
@@ -1809,7 +1809,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 7/2/2023,BELTON,MO,Anti-Black,131,Violent Crimes,Male,White,16,On-View Arrest,white
 5/27/2023,HARRISONVILLE,MO,Anti-Black,133,Violent Crimes,Male,White,48,NA,white
 9/13/2023,OZARK,MO,Anti-Hispanic,133,Violent Crimes,Male,White,62,NA,white
-4/4/2023,LIBERTY,MO,Anti-Black,114,Violent Crimes,Male,White,22,NA,white
+4/4/2023,LIBERTY,MO,Anti-Black,114,Sex & Human Trafficking,Male,White,22,NA,white
 4/2/2023,BOONVILLE,MO,Anti-Black,132,Violent Crimes,Male,NA,0,NA,NA
 11/29/2023,UNION,MO,Anti-Asian,240,Property Crimes,Female,White,24,NA,white
 12/27/2023,REPUBLIC,MO,Anti-Black,132,Violent Crimes,Male,White,41,NA,white
@@ -1916,7 +1916,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 7/17/2023,MAPLE,NC,Anti-Black,133,Violent Crimes,Male,White,50,NA,white
 9/4/2023,MANTEO,NC,Anti-Black,132,Violent Crimes,Male,White,31,NA,white
 9/20/2023,NAGS HEAD,NC,Anti-Black,133,Violent Crimes,Male,White,30,Taken into Custody,white
-5/17/2023,MOCKSVILLE,NC,Anti-Black,114,Violent Crimes,NA,NA,NA,NA,NA
+5/17/2023,MOCKSVILLE,NC,Anti-Black,114,Sex & Human Trafficking,NA,NA,NA,NA,NA
 5/30/2023,MOCKSVILLE,NC,Anti-Black,132,Violent Crimes,Male,White,58,On-View Arrest,white
 12/24/2023,DURHAM,NC,Anti-Asian,131,Violent Crimes,Male,White,26,NA,white
 6/1/2023,TARBORO,NC,Anti-Black,131,Violent Crimes,Female,White,34,On-View Arrest,white
@@ -2825,7 +2825,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 2/20/2023,CHESTER,SC,Anti-Black,132,Violent Crimes,Male,White,78,NA,white
 3/16/2023,WALTERBORO,SC,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 2/20/2023,WALTERBORO,SC,Anti-Black,238,Property Crimes,Male,Black,39,On-View Arrest,non-white
-7/25/2023,HARTSVILLE,SC,Anti-Hispanic,114,Violent Crimes,NA,NA,NA,NA,NA
+7/25/2023,HARTSVILLE,SC,Anti-Hispanic,114,Sex & Human Trafficking,NA,NA,NA,NA,NA
 12/27/2023,LAKE VIEW,SC,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 3/21/2023,FLORENCE,SC,Anti-Black,220,Property Crimes,NA,NA,0,NA,NA
 2/22/2023,GREENVILLE,SC,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
@@ -2842,7 +2842,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 11/14/2023,WEST COLUMBIA,SC,Anti-Black,132,Violent Crimes,Male,White,60,NA,white
 4/7/2023,BENNETTSVILLE,SC,Anti-Black,290,Property Crimes,Female,Black,33,NA,non-white
 8/21/2023,WALHALLA,SC,Anti-Black,266,Property Crimes,NA,NA,NA,NA,NA
-11/24/2023,WALHALLA,SC,Anti-Asian,114,Violent Crimes,Male,White,68,NA,white
+11/24/2023,WALHALLA,SC,Anti-Asian,114,Sex & Human Trafficking,Male,White,68,NA,white
 4/2/2023,COLUMBIA,SC,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 8/31/2023,COLUMBIA,SC,Anti-Black,133,Violent Crimes,Male,White,66,NA,white
 12/20/2023,SPARTANBURG,SC,Anti-Black,132,Violent Crimes,Male,White,17,Taken into Custody,white
@@ -3568,7 +3568,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/23/2022,FLORENCE,AL,Anti-Black,132,Violent Crimes,Male,White,64,NA,white
 1/12/2022,FLORENCE,AL,Anti-Hispanic,132,Violent Crimes,Female,White,74,NA,white
 11/30/2022,COURTLAND,AL,Anti-Black,132,Violent Crimes,Male,White,17,NA,white
-7/23/2022,HUNTSVILLE,AL,Anti-Black,111,Violent Crimes,Male,Black,39,NA,non-white
+7/23/2022,HUNTSVILLE,AL,Anti-Black,111,Sex & Human Trafficking,Male,Black,39,NA,non-white
 6/27/2022,HUNTSVILLE,AL,Anti-Black,133,Violent Crimes,Male,White,36,NA,white
 7/16/2022,HUNTSVILLE,AL,Anti-Black,132,Violent Crimes,Male,White,64,NA,white
 12/25/2022,HUNTSVILLE,AL,Anti-Black,132,Violent Crimes,NA,NA,0,NA,NA
@@ -4660,7 +4660,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 5/10/2022,VIDALIA,LA,Anti-Black,132,Violent Crimes,Male,Black,0,NA,non-white
 1/6/2022,VILLE PLATTE,LA,Anti-Black,132,Violent Crimes,Male,White,30,NA,white
 5/20/2022,KENNER,LA,Anti-Hispanic,132,Violent Crimes,Male,White,49,Taken into Custody,white
-6/20/2022,JENNINGS,LA,Anti-Black,114,Violent Crimes,Male,Black,15,NA,non-white
+6/20/2022,JENNINGS,LA,Anti-Black,114,Sex & Human Trafficking,Male,Black,15,NA,non-white
 9/7/2022,BROUSSARD,LA,Anti-Black,132,Violent Crimes,Female,Black,13,Summoned,non-white
 10/26/2022,LA PLACE,LA,Anti-Black,351,Drug & Vice Crimes,Female,Black,21,Summoned,non-white
 10/22/2022,LA PLACE,LA,Anti-Black,351,Drug & Vice Crimes,Female,Black,21,Summoned,non-white
@@ -4668,7 +4668,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/12/2022,COVINGTON,LA,Anti-Black,132,Violent Crimes,Male,White,41,On-View Arrest,white
 1/23/2022,COVINGTON,LA,Anti-Black,132,Violent Crimes,Male,White,28,On-View Arrest,white
 5/13/2022,AMITE,LA,Anti-Black,133,Violent Crimes,Male,Black,11,NA,non-white
-8/1/2022,AMITE,LA,Anti-Black,114,Violent Crimes,Male,White,15,Taken into Custody,white
+8/1/2022,AMITE,LA,Anti-Black,114,Sex & Human Trafficking,Male,White,15,Taken into Custody,white
 7/5/2022,AMITE,LA,Anti-Black,238,Property Crimes,Female,Black,39,NA,non-white
 2/12/2022,ELTON,LA,Anti-Asian,236,Property Crimes,NA,NA,0,NA,NA
 3/4/2022,HYANNIS,MA,Anti-Black,131,Violent Crimes,Male,White,52,On-View Arrest,white
@@ -5121,7 +5121,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/30/2022,HIGHLAND PARK,MI,Anti-Black,290,Property Crimes,Female,Black,28,NA,non-white
 8/18/2022,HIGHLAND PARK,MI,Anti-Black,132,Violent Crimes,Male,Black,21,On-View Arrest,non-white
 6/8/2022,HIGHLAND PARK,MI,Anti-Black,133,Violent Crimes,Male,Black,33,NA,non-white
-5/21/2022,HIGHLAND PARK,MI,Anti-Black,111,Violent Crimes,Male,Black,25,NA,non-white
+5/21/2022,HIGHLAND PARK,MI,Anti-Black,111,Sex & Human Trafficking,Male,Black,25,NA,non-white
 6/25/2022,HIGHLAND PARK,MI,Anti-Black,133,Violent Crimes,Male,Black,69,NA,non-white
 3/25/2022,HIGHLAND PARK,MI,Anti-Black,720,Other Crimes,Male,Black,27,NA,non-white
 8/24/2022,HIGHLAND PARK,MI,Anti-Black,132,Violent Crimes,Male,Black,33,NA,non-white
@@ -5193,7 +5193,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/1/2022,SAINT PAUL,MN,Anti-Black,120,Violent Crimes,Male,White,29,NA,white
 12/4/2022,ROSEVILLE,MN,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 9/13/2022,ROSEVILLE,MN,Anti-Hispanic,132,Violent Crimes,Female,White,71,NA,white
-2/12/2022,ROSEVILLE,MN,Anti-Hispanic,114,Violent Crimes,Male,Black,36,On-View Arrest,non-white
+2/12/2022,ROSEVILLE,MN,Anti-Hispanic,114,Sex & Human Trafficking,Male,Black,36,On-View Arrest,non-white
 2/4/2022,ROSEVILLE,MN,Anti-Black,133,Violent Crimes,Male,NA,0,NA,NA
 3/3/2022,ROSEVILLE,MN,Anti-Black,131,Violent Crimes,Female,White,55,NA,white
 1/30/2022,SAINT PAUL,MN,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
@@ -5255,7 +5255,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 12/25/2022,CLAYTON,MO,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 5/27/2022,BALLWIN,MO,Anti-Asian,131,Violent Crimes,NA,NA,0,NA,NA
 3/24/2022,SAINT LOUIS,MO,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
-6/23/2022,SAINT LOUIS,MO,Anti-Hispanic,111,Violent Crimes,Male,White,22,Taken into Custody,white
+6/23/2022,SAINT LOUIS,MO,Anti-Hispanic,111,Sex & Human Trafficking,Male,White,22,Taken into Custody,white
 3/24/2022,SAINT ANN,MO,Anti-Hispanic,131,Violent Crimes,Male,White,38,On-View Arrest,white
 6/5/2022,SAINT ANN,MO,Anti-Black,132,Violent Crimes,Male,White,41,On-View Arrest,white
 4/8/2022,SAINT LOUIS,MO,Anti-Black,132,Violent Crimes,Male,White,52,Taken into Custody,white
@@ -5706,7 +5706,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 5/17/2022,ALBANY,NY,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 5/22/2022,ALBANY,NY,Anti-Black,290,Property Crimes,Female,Black,24,NA,non-white
 7/5/2022,ALBANY,NY,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
-7/8/2022,ALBANY,NY,Anti-Black,111,Violent Crimes,Male,White,19,NA,white
+7/8/2022,ALBANY,NY,Anti-Black,111,Sex & Human Trafficking,Male,White,19,NA,white
 9/25/2022,ALBANY,NY,Anti-Black,133,Violent Crimes,Male,NA,0,NA,NA
 11/19/2022,ALBANY,NY,Anti-Black,133,Violent Crimes,Male,NA,0,NA,NA
 8/31/2022,ALBANY,NY,Anti-Black,236,Property Crimes,NA,NA,0,NA,NA
@@ -5801,7 +5801,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 4/27/2022,CLEVELAND,OH,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 9/29/2022,CLEVELAND,OH,Anti-Black,220,Property Crimes,Male,Black,0,NA,non-white
 2/15/2022,CLEVELAND,OH,Anti-Black,234,Property Crimes,Male,Black,0,NA,non-white
-2/11/2022,CLEVELAND,OH,Anti-Black,111,Violent Crimes,NA,NA,0,NA,NA
+2/11/2022,CLEVELAND,OH,Anti-Black,111,Sex & Human Trafficking,NA,NA,0,NA,NA
 6/9/2022,CLEVELAND,OH,Anti-Black,132,Violent Crimes,Male,Black,22,NA,non-white
 7/7/2022,CLEVELAND,OH,Anti-Black,290,Property Crimes,Male,Black,0,NA,non-white
 4/24/2022,CLEVELAND,OH,Anti-Black,131,Violent Crimes,Female,Black,67,NA,non-white
@@ -6410,7 +6410,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 7/17/2022,GEORGETOWN,TX,Anti-Black,131,Violent Crimes,Male,White,30,On-View Arrest,white
 12/4/2022,FLORENCE,TX,Anti-Hispanic,132,Violent Crimes,Male,White,46,NA,white
 12/2/2022,ROUND ROCK,TX,Anti-Asian,132,Violent Crimes,Male,White,60,NA,white
-8/8/2022,ROUND ROCK,TX,Anti-Hispanic,111,Violent Crimes,Male,White,30,NA,white
+8/8/2022,ROUND ROCK,TX,Anti-Hispanic,111,Sex & Human Trafficking,Male,White,30,NA,white
 9/2/2022,CEDAR PARK,TX,Anti-Hispanic,133,Violent Crimes,Male,White,53,NA,white
 4/2/2022,LEANDER,TX,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 3/25/2022,LEANDER,TX,Anti-Black,133,Violent Crimes,Male,White,33,NA,white
@@ -6435,7 +6435,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 2/23/2022,HOUSTON,TX,Anti-Hispanic,132,Violent Crimes,Male,Black,55,NA,non-white
 2/23/2022,HOUSTON,TX,Anti-Hispanic,133,Violent Crimes,Male,Hispanic,61,NA,non-white
 6/19/2022,HOUSTON,TX,Anti-Black,290,Property Crimes,Male,White,39,On-View Arrest,white
-11/16/2022,HOUSTON,TX,Anti-Black,112,Violent Crimes,Male,Black,31,NA,non-white
+11/16/2022,HOUSTON,TX,Anti-Black,112,Sex & Human Trafficking,Male,Black,31,NA,non-white
 12/5/2022,HOUSTON,TX,Anti-Black,132,Violent Crimes,Male,Black,56,NA,non-white
 12/2/2022,HOUSTON,TX,Anti-Black,120,Violent Crimes,Male,Black,0,NA,non-white
 10/19/2022,HOUSTON,TX,Anti-Black,133,Violent Crimes,Male,Hispanic,47,NA,non-white
@@ -6883,7 +6883,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/29/2022,VERONA,WI,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 10/10/2022,WAUPUN,WI,Anti-Hispanic,131,Violent Crimes,Female,White,13,NA,white
 10/4/2022,SUPERIOR,WI,Anti-Black,132,Violent Crimes,Female,White,23,Taken into Custody,white
-4/13/2022,MENOMONIE,WI,Anti-Black,112,Violent Crimes,NA,NA,0,NA,NA
+4/13/2022,MENOMONIE,WI,Anti-Black,112,Sex & Human Trafficking,NA,NA,0,NA,NA
 6/9/2022,EAU CLAIRE,WI,Anti-Asian,133,Violent Crimes,Male,White,41,Taken into Custody,white
 5/27/2022,LUXEMBURG,WI,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 2/2/2022,ONALASKA,WI,Anti-Black,132,Violent Crimes,Male,White,35,On-View Arrest,white
@@ -7144,7 +7144,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 12/3/2021,SAN DIEGO,CA,Anti-Black,133,Violent Crimes,Male,White,47,On-View Arrest,white
 12/15/2021,SAN DIEGO,CA,Anti-Black,132,Violent Crimes,Male,White,20,NA,white
 11/14/2021,SAN DIEGO,CA,Anti-Black,132,Violent Crimes,Male,White,31,NA,white
-11/9/2021,SAN DIEGO,CA,Anti-Black,114,Violent Crimes,Male,White,40,NA,white
+11/9/2021,SAN DIEGO,CA,Anti-Black,114,Sex & Human Trafficking,Male,White,40,NA,white
 11/28/2021,SAN MARCOS,CA,Anti-Asian,290,Property Crimes,Male,White,33,NA,white
 7/9/2021,SAN MARCOS,CA,Anti-Asian,133,Violent Crimes,Male,American Indian,49,NA,non-white
 9/11/2021,SAN DIEGO,CA,Anti-Black,133,Violent Crimes,Female,White,51,On-View Arrest,white
@@ -8063,7 +8063,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 9/11/2021,HAGERSTOWN,MD,Anti-Hispanic,290,Property Crimes,Male,White,30,NA,white
 10/28/2021,BALTIMORE,MD,Anti-Black,133,Violent Crimes,Male,White,20,NA,white
 11/27/2021,BALTIMORE,MD,Anti-Black,132,Violent Crimes,Male,Black,31,NA,non-white
-12/15/2021,BALTIMORE,MD,Anti-Hispanic,111,Violent Crimes,NA,NA,0,NA,NA
+12/15/2021,BALTIMORE,MD,Anti-Hispanic,111,Sex & Human Trafficking,NA,NA,0,NA,NA
 11/22/2021,BALTIMORE,MD,Anti-Black,200,Property Crimes,Female,White,52,NA,white
 8/26/2021,BALTIMORE,MD,Anti-Asian,131,Violent Crimes,NA,NA,0,NA,NA
 8/22/2021,BALTIMORE,MD,Anti-Black,132,Violent Crimes,NA,NA,0,NA,NA
@@ -8330,7 +8330,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 4/17/2021,MINNEAPOLIS,MN,Anti-Black,133,Violent Crimes,Male,White,56,NA,white
 12/20/2021,MINNEAPOLIS,MN,Anti-Hispanic,131,Violent Crimes,Male,White,0,NA,white
 3/19/2021,MINNEAPOLIS,MN,Anti-Hispanic,120,Violent Crimes,Male,Black,0,NA,non-white
-3/19/2021,MINNEAPOLIS,MN,Anti-Hispanic,114,Violent Crimes,Male,NA,0,NA,NA
+3/19/2021,MINNEAPOLIS,MN,Anti-Hispanic,114,Sex & Human Trafficking,Male,NA,0,NA,NA
 3/19/2021,MINNEAPOLIS,MN,Anti-Asian,131,Violent Crimes,NA,NA,0,NA,NA
 11/15/2021,MINNEAPOLIS,MN,Anti-Asian,132,Violent Crimes,Male,Black,17,NA,non-white
 5/5/2021,MINNEAPOLIS,MN,Anti-Asian,290,Property Crimes,NA,NA,0,NA,NA
@@ -8345,7 +8345,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 8/13/2021,MINNEAPOLIS,MN,Anti-Black,131,Violent Crimes,Male,American Indian,68,Summoned,non-white
 7/1/2021,SAINT LOUIS PARK,MN,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 5/5/2021,SAINT LOUIS PARK,MN,Anti-Black,132,Violent Crimes,Male,White,42,Taken into Custody,white
-10/15/2021,SAINT LOUIS PARK,MN,Anti-Black,114,Violent Crimes,Male,NA,31,Taken into Custody,NA
+10/15/2021,SAINT LOUIS PARK,MN,Anti-Black,114,Sex & Human Trafficking,Male,NA,31,Taken into Custody,NA
 9/4/2021,EDEN PRAIRIE,MN,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 5/27/2021, ,MN,Anti-Black,132,Violent Crimes,Male,Asian,39,On-View Arrest,non-white
 4/14/2021, ,MN,Anti-Asian,132,Violent Crimes,Male,Black,41,NA,non-white
@@ -8937,7 +8937,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 10/29/2021,CLEVELAND,OH,Anti-Black,290,Property Crimes,Female,Black,0,NA,non-white
 10/11/2021,CLEVELAND,OH,Anti-Black,290,Property Crimes,Female,Black,33,NA,non-white
 12/6/2021,CLEVELAND,OH,Anti-Black,290,Property Crimes,Male,Black,34,NA,non-white
-6/14/2021,CLEVELAND,OH,Anti-Black,114,Violent Crimes,Male,Black,18,NA,non-white
+6/14/2021,CLEVELAND,OH,Anti-Black,114,Sex & Human Trafficking,Male,Black,18,NA,non-white
 9/22/2021,CLEVELAND,OH,Anti-Black,133,Violent Crimes,Male,Black,46,NA,non-white
 4/9/2021,CLEVELAND,OH,Anti-Black,132,Violent Crimes,NA,NA,0,NA,NA
 4/30/2021,CLEVELAND,OH,Anti-Black,133,Violent Crimes,Male,White,58,NA,white
@@ -9016,7 +9016,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/24/2021,CHILLICOTHE,OH,Anti-Black,131,Violent Crimes,Male,White,44,On-View Arrest,white
 5/20/2021,SIDNEY,OH,Anti-Black,133,Violent Crimes,Male,White,47,Summoned,white
 10/13/2021,NORTH CANTON,OH,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
-3/15/2021,MASSILLON,OH,Anti-Black,114,Violent Crimes,Male,White,29,NA,white
+3/15/2021,MASSILLON,OH,Anti-Black,114,Sex & Human Trafficking,Male,White,29,NA,white
 7/26/2021,MASSILLON,OH,Anti-Black,133,Violent Crimes,Male,White,73,NA,white
 12/30/2021,DOVER,OH,Anti-Black,290,Property Crimes,Male,NA,14,NA,NA
 6/28/2021,VAN WERT,OH,Anti-Black,133,Violent Crimes,Male,White,26,NA,white
@@ -10058,7 +10058,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/7/2021,MILWAUKEE,WI,Anti-Black,290,Property Crimes,Male,White,43,NA,white
 3/8/2021,MILWAUKEE,WI,Anti-Black,290,Property Crimes,Male,White,43,NA,white
 3/16/2021,MILWAUKEE,WI,Anti-Black,133,Violent Crimes,Male,White,43,NA,white
-2/8/2021,RHINELANDER,WI,Anti-Hispanic,114,Violent Crimes,Male,White,17,On-View Arrest,white
+2/8/2021,RHINELANDER,WI,Anti-Hispanic,114,Sex & Human Trafficking,Male,White,17,On-View Arrest,white
 6/19/2021,APPLETON,WI,Anti-Black,132,Violent Crimes,Male,White,33,NA,white
 10/26/2021,KAUKAUNA,WI,Anti-Black,133,Violent Crimes,Male,White,29,NA,white
 7/18/2021,BALSAM LAKE,WI,Anti-Black,131,Violent Crimes,Male,White,22,Summoned,white
@@ -10624,7 +10624,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 1/30/2020,Dayton,KY,Anti-Black,132,Violent Crimes,Male,White,16,NA,white
 4/18/2020,Newport,KY,Anti-Hispanic,290,Property Crimes,NA,NA,NA,NA,NA
 7/30/2020,Carrollton,KY,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-3/6/2020,Grayson,KY,Anti-Black,111,Violent Crimes,Male,White,19,NA,white
+3/6/2020,Grayson,KY,Anti-Black,111,Sex & Human Trafficking,Male,White,19,NA,white
 7/26/2020,Grayson,KY,Anti-Black,240,Property Crimes,Male,White,29,NA,white
 2/6/2020,Hopkinsville,KY,Anti-Black,132,Violent Crimes,Female,White,37,On-View Arrest,white
 10/13/2020,Hopkinsville,KY,Anti-Black,133,Violent Crimes,Male,White,45,On-View Arrest,white
@@ -10754,7 +10754,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/7/2020,Holyoke,MA,Anti-Hispanic,131,Violent Crimes,NA,NA,NA,NA,NA
 4/3/2020,Monson,MA,Anti-Asian,133,Violent Crimes,NA,NA,NA,NA,NA
 3/12/2020,Springfield,MA,Anti-Black,132,Violent Crimes,Male,White,60,NA,white
-7/12/2020,Springfield,MA,Anti-Black,114,Violent Crimes,Male,White,32,NA,white
+7/12/2020,Springfield,MA,Anti-Black,114,Sex & Human Trafficking,Male,White,32,NA,white
 8/17/2020,Springfield,MA,Anti-Black,132,Violent Crimes,Female,White,51,NA,white
 8/18/2020,Springfield,MA,Anti-Black,133,Violent Crimes,NA,NA,15,NA,NA
 7/2/2020,Springfield,MA,Anti-Hispanic,132,Violent Crimes,Male,White,0,NA,white
@@ -10914,7 +10914,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 4/12/2020,Niles,MI,Anti-Black,290,Property Crimes,Male,White,48,Taken into Custody,white
 3/21/2020,Three Oaks,MI,Anti-Black,133,Violent Crimes,Male,NA,0,NA,NA
 4/10/2020,Battle Creek,MI,Anti-Black,132,Violent Crimes,Male,White,46,NA,white
-7/3/2020,Battle Creek,MI,Anti-Black,114,Violent Crimes,Male,White,72,Taken into Custody,white
+7/3/2020,Battle Creek,MI,Anti-Black,114,Sex & Human Trafficking,Male,White,72,Taken into Custody,white
 8/11/2020,Cassopolis,MI,Anti-Black,720,Other Crimes,NA,NA,NA,NA,NA
 7/14/2020,Edwardsburg,MI,Anti-Black,131,Violent Crimes,Male,White,64,On-View Arrest,white
 12/20/2020,Edwardsburg,MI,Anti-Black,220,Property Crimes,NA,NA,0,NA,NA
@@ -11229,7 +11229,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 6/29/2020,Starkville,MS,Anti-Asian,220,Property Crimes,Male,Black,15,On-View Arrest,non-white
 12/25/2020,Pontotoc,MS,Anti-Hispanic,132,Violent Crimes,Male,NA,33,NA,NA
 10/28/2020,Wiggins,MS,Anti-Hispanic,133,Violent Crimes,Male,White,0,NA,white
-8/8/2020,Great Falls,MT,Anti-Black,114,Violent Crimes,Female,American Indian,34,Taken into Custody,non-white
+8/8/2020,Great Falls,MT,Anti-Black,114,Sex & Human Trafficking,Female,American Indian,34,Taken into Custody,non-white
 7/17/2020,Great Falls,MT,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 9/24/2020,Great Falls,MT,Anti-Black,132,Violent Crimes,Male,White,31,NA,white
 5/17/2020,Bozeman,MT,Anti-Black,131,Violent Crimes,Female,White,63,NA,white
@@ -11369,13 +11369,13 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 7/18/2020,Burgaw,NC,Anti-Black,131,Violent Crimes,Male,White,59,Taken into Custody,white
 7/31/2020,Greenville,NC,Anti-Black,132,Violent Crimes,Male,White,31,On-View Arrest,white
 3/16/2020,Ayden,NC,Anti-Black,233,Property Crimes,Female,Black,0,NA,non-white
-11/16/2020,Ayden,NC,Anti-Black,113,Violent Crimes,Male,Black,0,NA,non-white
+11/16/2020,Ayden,NC,Anti-Black,113,Sex & Human Trafficking,Male,Black,0,NA,non-white
 11/25/2020,Ayden,NC,Anti-Black,91,Violent Crimes,Male,Black,19,Taken into Custody,non-white
 8/18/2020,Ayden,NC,Anti-Black,250,Property Crimes,Female,Black,33,NA,non-white
 7/27/2020,Ayden,NC,Anti-Black,290,Property Crimes,Female,Black,29,NA,non-white
 6/8/2020,Ayden,NC,Anti-Black,132,Violent Crimes,Male,Black,53,NA,non-white
 9/10/2020,Ayden,NC,Anti-Black,261,Property Crimes,Female,Black,41,Taken into Custody,non-white
-3/19/2020,Ayden,NC,Anti-Black,114,Violent Crimes,Female,Black,36,Taken into Custody,non-white
+3/19/2020,Ayden,NC,Anti-Black,114,Sex & Human Trafficking,Female,Black,36,Taken into Custody,non-white
 8/21/2020,Rockingham,NC,Anti-Asian,133,Violent Crimes,Male,White,55,NA,white
 12/16/2020,Lumberton,NC,Anti-Black,220,Property Crimes,NA,NA,NA,NA,NA
 2/22/2020,Lumberton,NC,Anti-Black,233,Property Crimes,Male,American Indian,31,Summoned,non-white
@@ -11526,7 +11526,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 11/5/2020,Wapakoneta,OH,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 3/1/2020,Hamilton,OH,Anti-Hispanic,133,Violent Crimes,Female,NA,19,NA,NA
 2/15/2020,Hamilton,OH,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
-1/21/2020,Hamilton,OH,Anti-Black,114,Violent Crimes,Male,White,15,Taken into Custody,white
+1/21/2020,Hamilton,OH,Anti-Black,114,Sex & Human Trafficking,Male,White,15,Taken into Custody,white
 5/1/2020,Middletown,OH,Anti-Hispanic,132,Violent Crimes,Male,NA,32,NA,NA
 6/1/2020,Middletown,OH,Anti-Black,131,Violent Crimes,Male,White,33,Summoned,white
 6/27/2020,Middletown,OH,Anti-Black,132,Violent Crimes,Male,White,53,NA,white
@@ -11922,7 +11922,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 10/15/2020,Murfreesboro,TN,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 6/6/2020,Murfreesboro,TN,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 12/20/2020,Murfreesboro,TN,Anti-Black,133,Violent Crimes,Male,White,42,NA,white
-12/17/2020,Memphis,TN,Anti-Black,111,Violent Crimes,Male,Black,21,NA,non-white
+12/17/2020,Memphis,TN,Anti-Black,111,Sex & Human Trafficking,Male,Black,21,NA,non-white
 2/26/2020,Memphis,TN,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 1/7/2020,Memphis,TN,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 9/17/2020,Collierville,TN,Anti-Black,133,Violent Crimes,Female,White,21,NA,white
@@ -11953,7 +11953,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 12/14/2020,Sweeny,TX,Anti-Black,133,Violent Crimes,Male,White,55,NA,white
 12/13/2020,Caldwell,TX,Anti-Black,133,Violent Crimes,Male,White,47,NA,white
 7/20/2020,Baird,TX,Anti-Black,290,Property Crimes,Male,White,61,NA,white
-12/16/2020,MONT BELVIEU,TX,Anti-Hispanic,114,Violent Crimes,Male,White,0,NA,white
+12/16/2020,MONT BELVIEU,TX,Anti-Hispanic,114,Sex & Human Trafficking,Male,White,0,NA,white
 5/8/2020,Frisco,TX,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 8/23/2020,McKinney,TX,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 9/16/2020,McKinney,TX,Anti-Hispanic,290,Property Crimes,Male,White,40,NA,white
@@ -12053,7 +12053,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/15/2020,San Saba,TX,Anti-Hispanic,132,Violent Crimes,Male,White,32,NA,white
 7/22/2020,San Saba,TX,Anti-Black,133,Violent Crimes,Male,White,16,NA,white
 9/4/2020,Fort Worth,TX,Anti-Hispanic,132,Violent Crimes,Male,White,33,NA,white
-12/6/2020,Fort Worth,TX,Anti-Hispanic,111,Violent Crimes,Male,White,32,NA,white
+12/6/2020,Fort Worth,TX,Anti-Hispanic,111,Sex & Human Trafficking,Male,White,32,NA,white
 3/7/2020,Arlington,TX,Anti-Black,132,Violent Crimes,Male,White,25,NA,white
 6/27/2020,Arlington,TX,Anti-Black,220,Property Crimes,Male,White,22,NA,white
 6/21/2020,Arlington,TX,Anti-Black,132,Violent Crimes,Male,White,33,NA,white
@@ -12140,7 +12140,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 5/21/2020,Houston,TX,Anti-Black,133,Violent Crimes,Male,White,29,NA,white
 11/28/2020,Houston,TX,Anti-Black,238,Property Crimes,NA,NA,0,NA,NA
 3/7/2020,Houston,TX,Anti-Hispanic,133,Violent Crimes,Male,White,65,On-View Arrest,white
-7/16/2020,Houston,TX,Anti-Black,111,Violent Crimes,Male,NA,0,NA,NA
+7/16/2020,Houston,TX,Anti-Black,111,Sex & Human Trafficking,Male,NA,0,NA,NA
 5/28/2020,Houston,TX,Anti-Hispanic,132,Violent Crimes,Female,Black,26,NA,non-white
 8/3/2020,Houston,TX,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 6/17/2020,Houston,TX,Anti-Black,131,Violent Crimes,Male,White,32,NA,white
@@ -12497,7 +12497,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 6/6/2020,De Pere,WI,Anti-Black,131,Violent Crimes,Male,American Indian,33,On-View Arrest,non-white
 5/22/2020,Siren,WI,Anti-Black,132,Violent Crimes,NA,NA,NA,NA,NA
 9/14/2020,Siren,WI,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-8/14/2020,New Holstein,WI,Anti-Hispanic,114,Violent Crimes,Male,White,26,Taken into Custody,white
+8/14/2020,New Holstein,WI,Anti-Hispanic,114,Sex & Human Trafficking,Male,White,26,Taken into Custody,white
 2/15/2020,Madison,WI,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 1/27/2020,Madison,WI,Anti-Asian,132,Violent Crimes,Male,White,29,On-View Arrest,white
 6/25/2020,Madison,WI,Anti-Hispanic,131,Violent Crimes,Female,White,25,On-View Arrest,white
@@ -12748,7 +12748,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 9/20/2019,Warner Robins,GA,Anti-Black,133,Violent Crimes,Male,Black,24,Taken into Custody,non-white
 9/25/2019,Warner Robins,GA,Anti-Black,132,Violent Crimes,Female,Black,33,NA,non-white
 12/19/2019,Dallas,GA,Anti-Black,133,Violent Crimes,Male,White,28,NA,white
-12/6/2019,Fort Valley,GA,Anti-Black,114,Violent Crimes,Male,Black,23,NA,non-white
+12/6/2019,Fort Valley,GA,Anti-Black,114,Sex & Human Trafficking,Male,Black,23,NA,non-white
 12/10/2019,Fort Valley,GA,Anti-Black,133,Violent Crimes,Female,Black,19,NA,non-white
 12/2/2019,Fort Valley,GA,Anti-Black,133,Violent Crimes,Female,Black,21,NA,non-white
 12/2/2019,Fort Valley,GA,Anti-Black,132,Violent Crimes,Male,NA,0,NA,NA
@@ -13420,7 +13420,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/11/2019,Hilliard,OH,Anti-Black,290,Property Crimes,NA,NA,0,NA,NA
 2/15/2019,Hilliard,OH,Anti-Black,132,Violent Crimes,Male,White,62,NA,white
 3/30/2019,Hilliard,OH,Anti-Asian,290,Property Crimes,NA,NA,0,NA,NA
-12/5/2019,Whitehall,OH,Anti-Asian,111,Violent Crimes,Male,Black,28,NA,non-white
+12/5/2019,Whitehall,OH,Anti-Asian,111,Sex & Human Trafficking,Male,Black,28,NA,non-white
 11/8/2019,Columbus,OH,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 12/8/2019,Columbus,OH,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 7/6/2019,Chardon,OH,Anti-Black,133,Violent Crimes,Male,White,28,On-View Arrest,white
@@ -13461,7 +13461,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 8/31/2019,Orrville,OH,Anti-Black,131,Violent Crimes,Male,White,63,NA,white
 12/5/2019,Wooster,OH,Anti-Hispanic,133,Violent Crimes,Male,White,44,NA,white
 1/18/2019,Cincinnati,OH,Anti-Black,220,Property Crimes,NA,NA,NA,NA,NA
-1/1/2019,Cincinnati,OH,Anti-Black,111,Violent Crimes,Male,Black,73,NA,non-white
+1/1/2019,Cincinnati,OH,Anti-Black,111,Sex & Human Trafficking,Male,Black,73,NA,non-white
 11/9/2019,Cincinnati,OH,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 9/17/2019,Cincinnati,OH,Anti-Hispanic,132,Violent Crimes,Male,Black,12,NA,non-white
 8/16/2019,Cincinnati,OH,Anti-Black,131,Violent Crimes,Male,White,30,NA,white
@@ -13844,7 +13844,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 3/3/2019,Leesburg,VA,Anti-Black,290,Property Crimes,Male,NA,18,NA,NA
 1/16/2019,Leesburg,VA,Anti-Hispanic,132,Violent Crimes,Male,White,38,NA,white
 4/2/2019,Leesburg,VA,Anti-Black,132,Violent Crimes,Male,White,14,NA,white
-4/24/2019,Leesburg,VA,Anti-Black,114,Violent Crimes,Female,White,45,NA,white
+4/24/2019,Leesburg,VA,Anti-Black,114,Sex & Human Trafficking,Female,White,45,NA,white
 4/29/2019,Leesburg,VA,Anti-Black,133,Violent Crimes,Male,Black,14,NA,non-white
 2/15/2019,Leesburg,VA,Anti-Black,133,Violent Crimes,Male,White,15,NA,white
 3/26/2019,Leesburg,VA,Anti-Black,133,Violent Crimes,Male,White,13,NA,white
@@ -14937,7 +14937,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 11/2/2018,Pigeon Forge,TN,Anti-Black,133,Violent Crimes,Male,White,29,NA,white
 10/19/2018,Memphis,TN,Anti-Black,133,Violent Crimes,NA,NA,0,NA,NA
 11/26/2018,Memphis,TN,Anti-Black,132,Violent Crimes,Male,Black,20,Taken into Custody,non-white
-1/29/2018,Memphis,TN,Anti-Black,114,Violent Crimes,Male,Black,29,Taken into Custody,non-white
+1/29/2018,Memphis,TN,Anti-Black,114,Sex & Human Trafficking,Male,Black,29,Taken into Custody,non-white
 8/14/2018,Germantown,TN,Anti-Black,133,Violent Crimes,Male,White,32,NA,white
 11/6/2018,Millington,TN,Anti-Black,290,Property Crimes,Female,Black,26,Taken into Custody,non-white
 8/19/2018,Millington,TN,Anti-Black,131,Violent Crimes,Male,White,26,NA,white
@@ -15207,7 +15207,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 7/15/2018,Seattle,WA,Anti-Black,132,Violent Crimes,Male,White,25,NA,white
 5/5/2018,Seattle,WA,Anti-Black,131,Violent Crimes,Male,Asian,57,On-View Arrest,non-white
 5/25/2018,Seattle,WA,Anti-Black,132,Violent Crimes,Female,NA,76,NA,NA
-2/7/2018,Seattle,WA,Anti-Black,114,Violent Crimes,Male,White,38,On-View Arrest,white
+2/7/2018,Seattle,WA,Anti-Black,114,Sex & Human Trafficking,Male,White,38,On-View Arrest,white
 4/6/2018,Seattle,WA,Anti-Black,132,Violent Crimes,Male,Black,39,NA,non-white
 1/9/2018,Seattle,WA,Anti-Hispanic,132,Violent Crimes,Female,American Indian,0,NA,non-white
 5/5/2018,Seattle,WA,Anti-Hispanic,132,Violent Crimes,Male,Black,49,Taken into Custody,non-white
@@ -15333,12 +15333,12 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 6/6/2017,Hoover,AL,Anti-Black,132,Violent Crimes,Male,White,30,NA,white
 10/21/2017,Hoover,AL,Anti-Black,133,Violent Crimes,Female,White,29,NA,white
 6/29/2017,Prescott,AR,Anti-Black,290,Property Crimes,NA,NA,53,NA,NA
-1/14/2017,Prescott,AR,Anti-Black,111,Violent Crimes,Male,Black,44,NA,non-white
+1/14/2017,Prescott,AR,Anti-Black,111,Sex & Human Trafficking,Male,Black,44,NA,non-white
 5/14/2017,Prescott,AR,Anti-Black,233,Property Crimes,NA,NA,50,NA,NA
 5/7/2017,Prescott,AR,Anti-Black,131,Violent Crimes,Female,Black,58,On-View Arrest,non-white
 5/24/2017,Prescott,AR,Anti-Black,233,Property Crimes,Female,Black,24,NA,non-white
 5/23/2017,Prescott,AR,Anti-Black,233,Property Crimes,NA,NA,37,NA,NA
-8/7/2017,Prescott,AR,Anti-Black,111,Violent Crimes,Male,Black,15,NA,non-white
+8/7/2017,Prescott,AR,Anti-Black,111,Sex & Human Trafficking,Male,Black,15,NA,non-white
 11/13/2017,Prescott,AR,Anti-Black,132,Violent Crimes,NA,NA,17,On-View Arrest,NA
 7/17/2017,Benton,AR,Anti-Black,132,Violent Crimes,Female,White,21,Summoned,white
 7/2/2017,Benton,AR,Anti-Black,220,Property Crimes,NA,NA,0,NA,NA
@@ -15604,7 +15604,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 5/22/2017,Tewksbury,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 7/8/2017,Waltham,MA,Anti-Hispanic,290,Property Crimes,NA,NA,NA,NA,NA
 5/25/2017,Braintree,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-6/11/2017,Braintree,MA,Anti-Black,114,Violent Crimes,Male,White,32,On-View Arrest,white
+6/11/2017,Braintree,MA,Anti-Black,114,Sex & Human Trafficking,Male,White,32,On-View Arrest,white
 2/21/2017,Braintree,MA,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 3/22/2017,Brookline,MA,Anti-Black,132,Violent Crimes,Male,White,52,Summoned,white
 11/4/2017,Medway,MA,Anti-Hispanic,132,Violent Crimes,Male,White,42,Taken into Custody,white
@@ -15718,7 +15718,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 4/27/2017,Roseville,MI,Anti-Black,132,Violent Crimes,Male,White,19,Taken into Custody,white
 4/4/2017,Roseville,MI,Anti-Black,290,Property Crimes,Male,White,0,NA,white
 3/6/2017,Roseville,MI,Anti-Black,132,Violent Crimes,Male,White,20,NA,white
-12/22/2017,Saint Clair Shores,MI,Anti-Black,114,Violent Crimes,Male,White,13,On-View Arrest,white
+12/22/2017,Saint Clair Shores,MI,Anti-Black,114,Sex & Human Trafficking,Male,White,13,On-View Arrest,white
 8/21/2017,Shelby Township,MI,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 10/28/2017,Shelby Township,MI,Anti-Black,132,Violent Crimes,Male,White,30,NA,white
 4/14/2017,Marquette,MI,Anti-Asian,234,Property Crimes,Male,White,37,NA,white
@@ -16161,7 +16161,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 8/25/2017,Bartlett,TN,Anti-Asian,131,Violent Crimes,Male,Black,24,NA,non-white
 7/23/2017,Blountville,TN,Anti-Black,133,Violent Crimes,Male,White,39,NA,white
 8/1/2017,Covington,TN,Anti-Black,131,Violent Crimes,Female,Black,24,On-View Arrest,non-white
-9/15/2017,Covington,TN,Anti-Black,114,Violent Crimes,Male,Black,38,NA,non-white
+9/15/2017,Covington,TN,Anti-Black,114,Sex & Human Trafficking,Male,Black,38,NA,non-white
 3/4/2017,Brighton,TN,Anti-Black,132,Violent Crimes,Male,White,57,On-View Arrest,white
 6/11/2017,McMinnville,TN,Anti-Black,263,Property Crimes,Male,White,48,On-View Arrest,white
 8/30/2017,Jonesborough,TN,Anti-Black,132,Violent Crimes,Male,White,45,NA,white
@@ -17332,7 +17332,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 8/4/2016,WAGONER,OK,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 8/4/2016,WAGONER,OK,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 4/26/2016,CORVALLIS,OR,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-1/6/2016,CROOK,OR,Anti-Hispanic,111,Violent Crimes,NA,NA,NA,NA,NA
+1/6/2016,CROOK,OR,Anti-Hispanic,111,Sex & Human Trafficking,NA,NA,NA,NA,NA
 4/15/2016,TALENT,OR,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 4/15/2016,TALENT,OR,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 6/27/2016,LANE,OR,Anti-Black,133,Violent Crimes,NA,NA,NA,On-View Arrest,NA
@@ -17839,7 +17839,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 2/21/2015,FORT COLLINS,CO,Anti-Asian,131,Violent Crimes,NA,NA,NA,Summoned,NA
 2/3/2015,STERLING,CO,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 4/12/2015,GRAND JUNCTION,CO,Anti-Hispanic,133,Violent Crimes,NA,NA,NA,Summoned,NA
-6/4/2015,LA JUNTA,CO,Anti-Black,111,Violent Crimes,NA,NA,NA,Taken into Custody,NA
+6/4/2015,LA JUNTA,CO,Anti-Black,111,Sex & Human Trafficking,NA,NA,NA,Taken into Custody,NA
 1/25/2015,PITKIN,CO,Anti-Black,133,Violent Crimes,NA,NA,NA,Taken into Custody,NA
 10/19/2015,ASPEN,CO,Anti-Hispanic,133,Violent Crimes,NA,NA,NA,On-View Arrest,NA
 4/18/2015,PUEBLO,CO,Anti-Black,132,Violent Crimes,NA,NA,NA,NA,NA
@@ -17922,7 +17922,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 2/13/2015,ROCKFORD,IL,Anti-Hispanic,132,Violent Crimes,NA,NA,NA,NA,NA
 9/9/2015,ROCKFORD,IL,Anti-Black,131,Violent Crimes,NA,NA,NA,Taken into Custody,NA
 2/19/2015,SP: RUSH COUNTY,IN,Anti-Black,132,Violent Crimes,NA,NA,NA,NA,NA
-5/11/2015,SP: RUSH COUNTY,IN,Anti-Black,114,Violent Crimes,NA,NA,NA,NA,NA
+5/11/2015,SP: RUSH COUNTY,IN,Anti-Black,114,Sex & Human Trafficking,NA,NA,NA,NA,NA
 3/8/2015,IOLA,KS,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
 10/3/2015,GREAT BEND,KS,Anti-Black,132,Violent Crimes,NA,NA,NA,NA,NA
 10/3/2015,GREAT BEND,KS,Anti-Black,132,Violent Crimes,NA,NA,NA,NA,NA
@@ -17987,7 +17987,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 2/21/2015,OWENSBORO,KY,Anti-Black,131,Violent Crimes,NA,NA,NA,On-View Arrest,NA
 4/6/2015,LEXINGTON,KY,Anti-Hispanic,236,Property Crimes,NA,NA,NA,NA,NA
 1/20/2015,LEXINGTON,KY,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA
-11/1/2015,LEXINGTON,KY,Anti-Black,114,Violent Crimes,NA,NA,NA,NA,NA
+11/1/2015,LEXINGTON,KY,Anti-Black,114,Sex & Human Trafficking,NA,NA,NA,NA,NA
 4/12/2015,LEXINGTON,KY,Anti-Hispanic,131,Violent Crimes,NA,NA,NA,On-View Arrest,NA
 12/12/2015,LEXINGTON,KY,Anti-Black,133,Violent Crimes,NA,NA,NA,NA,NA
 10/23/2015,LEXINGTON,KY,Anti-Hispanic,290,Property Crimes,NA,NA,NA,NA,NA
@@ -18364,7 +18364,7 @@ date,city,state,hate_crime,offender_category,offense_cat,offender_sex,offender_r
 9/7/2015,SIDNEY,MT,Anti-Black,131,Violent Crimes,NA,NA,NA,Taken into Custody,NA
 3/12/2015,YELLOWSTONE,MT,Anti-Black,131,Violent Crimes,NA,NA,NA,NA,NA
 3/12/2015,YELLOWSTONE,MT,Anti-Black,131,Violent Crimes,NA,NA,NA,NA,NA
-2/22/2015,COZAD,NE,Anti-Hispanic,114,Violent Crimes,NA,NA,NA,NA,NA
+2/22/2015,COZAD,NE,Anti-Hispanic,114,Sex & Human Trafficking,NA,NA,NA,NA,NA
 1/25/2015,COZAD,NE,Anti-Hispanic,132,Violent Crimes,NA,NA,NA,Summoned,NA
 6/9/2015,LEXINGTON,NE,Anti-Hispanic,290,Property Crimes,NA,NA,NA,Summoned,NA
 8/17/2015,NORTH PLATTE,NE,Anti-Black,290,Property Crimes,NA,NA,NA,NA,NA

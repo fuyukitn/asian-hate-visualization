@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scroll-Driven Charts 2, 4, 5, 6</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+  <!-- SCROLL CONTAINER -->
+  <div class="scrolly" id="chartsStory">
+    <!-- LEFT: FIXED CHART AREA -->
+    <div class="graphic" id="chartGraphic">
+      <div id="chartContainer"></div>
+    </div>
+
+    <!-- RIGHT: SCROLLING TEXT -->
+    <div class="steps">
+      <section class="step" data-step="1">
+        <h2>What Kinds of Hate Crimes Target Asian Communities?</h2>
+        <p>Most hate crimes against Asian people are violent — 
+            like murders, abduction, or intimidation. In fact, nearly 8 out 
+            of 10 anti-Asian incidents in the data are violent in nature. That’s high, 
+            but not quite as high as what we see in anti-Hispanic hate crimes. 
+            Meanwhile, anti-Black hate crimes have a bigger share of property-related 
+            offenses, like vandalism.
+
+            So while violence is the dominant pattern, the specific kinds of hate 
+            crimes can vary depending on who’s being targeted. Comparing across groups 
+            helps highlight what’s uniquely happening in anti-Asian cases.</p>
+      </section>
+
+      <section class="step" data-step="2">
+        <h2>Are Anti-Asian Hate Crimes Mostly Committed by Men?</h2>
+        <p>Yes — overwhelmingly so. Just like in other hate crime categories, men are by far the most common offenders in anti-Asian hate crimes. Around 80% of recorded offenders are male.
+
+            But even though this male dominance is consistent across all groups, there are small differences when you zoom in. For example, anti-Black hate crimes have a slightly higher percentage of male offenders, and anti-Hispanic ones a little less. These gaps might seem small, but they’re real — and statistically meaningful — which tells us there’s nuance even within the broader trends.</p>
+      </section>
+
+      <section class="step" data-step="3">
+        <h2>Who Are the People Committing Anti-Asian Hate Crimes?</h2>
+        <p>Here’s where things get especially revealing: while white offenders make up the largest group behind anti-Asian hate crimes, there’s also a significant number of offenders from other racial backgrounds — including Black and Hispanic individuals.
+
+            That makes anti-Asian hate crimes more racially diverse in terms of who’s committing them, especially compared to anti-Black hate crimes, which are overwhelmingly committed by white offenders. This broader mix speaks to how anti-Asian sentiment can cut across multiple communities — something important to consider when thinking about prevention and education.</p>
+      </section>
+
+      <section class="step" data-step="4">
+        <h2>How Old Are the People Committing Anti-Asian Hate Crimes?</h2>
+        <p>People who commit anti-Asian hate crimes come from a wide age range — from teenagers to people in their 70s. But the most common age group is people in their 30s. What’s striking is that anti-Asian hate crimes show more spread across older age groups than the other categories do.
+
+            That broader age range suggests anti-Asian bias isn't just a “young hothead” problem. It can surface in different forms and motivations across life stages — which is something worth paying attention to when shaping responses.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- Optional Tooltip -->
+  <div id="tooltip"></div>
+
+  <!-- Load Chart Scripts -->
+  <script src="charts/chart2.js"></script>
+  <script src="charts/chart4.js"></script>
+  <script src="charts/chart5.js"></script>
+  <script src="charts/chart6.js"></script>
+
+  <!-- Scroll Observer Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const chartContainer = document.getElementById('chartContainer');
+      const steps = document.querySelectorAll('.step');
+
+      let chart2Rendered = false;
+      let chart4Rendered = false;
+      let chart5Rendered = false;
+      let chart6Rendered = false;
+
+      function clearChart() {
+        chartContainer.innerHTML = '';
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stepNum = entry.target.dataset.step;
+            clearChart();
+
+            if (stepNum === '1' && window.renderChart2) window.renderChart2('#chartContainer');
+            else if (stepNum === '2' && window.renderChart4) window.renderChart4('#chartContainer');
+            else if (stepNum === '3' && window.renderChart5) window.renderChart5('#chartContainer');
+            else if (stepNum === '4' && window.renderChart6) window.renderChart6('#chartContainer');
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+      });
+
+      steps.forEach(step => observer.observe(step));
+    });
+  </script>
+</body>
+</html>

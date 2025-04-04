@@ -1,65 +1,90 @@
-/* Basic resets */
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100%;
-    overflow-x: hidden; /* no horizontal scroll */
+    height: 100%;
+    overflow-x: hidden;
     font-family: sans-serif;
   }
   
-  /* Container that holds both columns */
-  #container {
-    display: flex;
+  .scrolly {
+    position: relative;
     width: 100%;
-    height: 100vh; /* full viewport height */
   }
   
-  /* LEFT COLUMN => pinned map, fills half the screen */
-  .left {
-    position: sticky;
+  /* Fixed graphic on the left */
+  .graphic {
+    position: fixed;
+    left: 0;
     top: 0;
     width: 60%;
     height: 100vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
   }
   
-  /* 
-     #mapContainer => holds the map & legend,
-     with some 20px padding so it’s not too tight 
-     around the edges.
-  */
-  #mapContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  /* White boxes for map/chart */
+  #mapContainer, #chart2Container {
+    width: 90%;
+    height: 80%;
     padding: 20px;
-    box-sizing: border-box;
     background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
   }
   
-  /* The #map element will have different heights 
-     depending on the step. By default: height: 100%.
-     In Step 3, we add a “full-height” class => 100vh.
-  */
-  #map {
+  #map, #chart2 {
     width: 100%;
     height: 100%;
-    transition: height 0.5s;
   }
-  #map.full-height {
+  
+  /* Steps on the right */
+  .steps {
+    position: relative;
+    width: 40%;
+    margin-left: 60%;
+    background: #f9f9f9;
+    z-index: 2;
+  }
+  
+  .step, .step2 {
     height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
   }
   
-  /* The <svg> inside #map fills the container dimension, 
-     with “xMidYMid meet” to keep everything visible 
-     plus margin (may letterbox if aspect ratio differs).
-  */
-  #map svg {
+  /* Cover is a full screen */
+  .cover {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 3;
   }
   
-  /* Smaller legend in top-left corner. */
+  /* Show map by default, hide chart2 by default */
+  #story1 .graphic {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  #story2 .graphic {
+    visibility: hidden;
+    opacity: 0;
+  }
+  
   #legend {
     position: absolute;
     top: 20px;
@@ -68,27 +93,10 @@ html, body {
     padding: 8px;
     border: 1px solid #ccc;
     font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
   
-  /* RIGHT COLUMN => scrollytelling steps */
-  .right {
-    width: 40%;
-    height: 100vh;
-    overflow-y: scroll;
-    background: #f9f9f9;
-  }
-  
-  /* Each step => full screen height, center text. */
-  .step {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  
-    height: 100vh;
-    padding: 4rem;
-    box-sizing: border-box;
-  }
-  
-  /* Tooltip (absolute on body) */
   #tooltip {
     position: absolute;
     z-index: 9999;
@@ -101,19 +109,17 @@ html, body {
     display: none;
   }
   
-  /* States => basic stroke. */
   .state {
     stroke: #333;
     stroke-width: 1;
     cursor: pointer;
   }
   
-  /* State labels => we place them via JS at path centroids. */
   .state-label {
     fill: #222;
     font-size: 10px;
-    pointer-events: none; /* let mouse pass through labels */
     text-anchor: middle;
     dominant-baseline: middle;
+    pointer-events: none;
   }
   
