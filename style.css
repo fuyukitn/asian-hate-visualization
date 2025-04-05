@@ -327,18 +327,21 @@ html, body {
 }
 
 #hero-transition {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url('https://static01.nyt.com/images/2021/03/31/nyregion/31nyhate-suspect1/31nyhate-suspect1-jumbo-v2.jpg?quality=75&auto=webp') center center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  color: #fff;
-  text-align: left;
-  padding: 0 20px 0 100px;
-  z-index: 3;
-}
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://upload.wikimedia.org/wikipedia/commons/7/7f/Stop_Asian_Hate_IMG_1957a_%2851076888183%29.jpg') center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #fff;
+    text-align: left;
+    padding: 0 20px 0 100px;
+    z-index: 3;
+  }
+  
 
 .hero-content {
   background: rgba(0, 0, 0, 0.5);
@@ -424,18 +427,35 @@ line-height: 1.5;
 }
 
 #intro-hero {
-height: 100vh;
-width: 100%;
-background: linear-gradient(to left, #111, #000);
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-text-align: center;
-color: white;
-font-family: Georgia, 'Times New Roman', serif;
-padding: 0 20px;
-}
+    height: 100vh;
+    width: 100%;
+    background: 
+      linear-gradient(to right, rgba(0, 0, 0, 0) 40%, rgb(31, 31, 31) 80%),
+      url('/media/img.jpg');
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    padding: 0;
+    color: white;
+  }
+  
+  .intro-flex {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-right: 5%;
+  }
+  
+  .intro-content {
+    max-width: 600px;
+    text-align: center;
+  }
 
 .intro-content h1 {
 font-size: 2.8rem;
@@ -469,12 +489,18 @@ box-sizing: border-box;
 }
 
 .step.end {
-min-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-background: #111; /* same as other steps or customize */
-color: #fff;
-padding: 60px 30px;
-}
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    padding: 60px 30px;
+    width: 100%;
+  }
+  
+  .step.end .content {
+    max-width: 600px;
+    width: 90%;
+  }
