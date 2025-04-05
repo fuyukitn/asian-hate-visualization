@@ -3,8 +3,8 @@
 
 const locationCategories = ["Residence", "School", "Commercial", "Road", "Other"];
 const colorMap = {
-  highlightLow: "#e74c3c",  // Dark red for Residence and School
-  highlightHigh: "#f44336", // Bright red for Commercial and Road
+  highlightLow: "#b91c1c",  // Dark red for Residence and School
+  highlightHigh: "#ef4444", // Bright red for Commercial and Road
   others: "#666" // Gray for Other
 };
 
@@ -47,7 +47,7 @@ d3.csv("data/1-5_location.csv", d3.autoType).then(data => {
       })
       .on("mouseover", (event, d) => {
         tooltip.transition().style("opacity", 0.95);
-        tooltip.html(`<strong>${d.race.replace("Anti-", "")}</strong><br>${d.category}: ${d.value.toFixed(1)}%`)
+        tooltip.html(`<strong>${d.race}</strong><br>${d.category}: ${d.value.toFixed(1)}%`)
           .style("left", `${event.pageX + 10}px`)
           .style("top", `${event.pageY - 28}px`);
       })

@@ -8,6 +8,13 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
   const x1 = d3.scaleBand().domain(races).range([0, x0.bandwidth()]).padding(0.05);
   const y = d3.scaleLinear().domain([0, 75]).range([barHeight, 0]); // Set max to 75%
 
+  // Adjust the color map
+  const colorMap = {
+    highlightLow: "#b91c1c",  // Dark red for Acquaintance
+    highlightHigh: "#ef4444", // Bright red for Stranger
+    others: "#666"            // Gray for Unknown
+  };
+
   const categoryGroups = g.selectAll("g.category")
     .data(categories)
     .join("g")
@@ -35,13 +42,13 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
       .attr("rx", 4)
       .attr("fill", d => {
         // Apply color based on category and race
-        if (d.race === "Anti-Asian" && d.category === "Acquaintance") return "#3b82f6";  // Blue
-        if (d.race === "Anti-Asian" && d.category === "Stranger") return "#ef4444";     // Red
-        return "#666";  // For other races
+        if (d.race === "Anti-Asian" && d.category === "Acquaintance") return colorMap.highlightLow;  // Dark red
+        if (d.race === "Anti-Asian" && d.category === "Stranger") return colorMap.highlightHigh;     // Bright red
+        return colorMap.others;  // For other races
       })
       .on("mouseover", (event, d) => {
         tooltip.transition().style("opacity", 0.95);
-        tooltip.html(`<strong>${d.race.replace("Anti-", "")}</strong><br>${d.category}: ${d.value.toFixed(1)}%`)
+        tooltip.html(`<strong>${d.race}</strong><br>${d.category}: ${d.value.toFixed(1)}%`)
           .style("left", `${event.pageX + 10}px`)
           .style("top", `${event.pageY - 28}px`);
       })
@@ -58,7 +65,7 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
       .join("text")
       .attr("class", "race-label")
       .attr("x", d => x1(d.race) + x1.bandwidth() / 2)
-      .attr("y", barHeight + 18)  // Adjust label position vertically to avoid overlap
+      .attr("y", barHeight + 25)  // Adjust label position vertically further
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
       .style("fill", "#ccc")
