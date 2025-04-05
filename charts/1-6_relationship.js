@@ -6,7 +6,7 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
   const categories = ["Acquaintance", "Stranger", "Unknown"];
   const x0 = d3.scaleBand().domain(categories).range([0, barWidth]).paddingInner(0.1);
   const x1 = d3.scaleBand().domain(races).range([0, x0.bandwidth()]).padding(0.05);
-  const y = d3.scaleLinear().domain([0, 100]).range([barHeight, 0]);
+  const y = d3.scaleLinear().domain([0, 75]).range([barHeight, 0]); // Set max to 75%
 
   const categoryGroups = g.selectAll("g.category")
     .data(categories)
@@ -34,9 +34,10 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
       .attr("height", 0)
       .attr("rx", 4)
       .attr("fill", d => {
-        if (d.race === "Anti-Asian" && d.category === "Acquaintance") return "#3b82f6";
-        if (d.race === "Anti-Asian" && d.category === "Stranger") return "#ef4444";
-        return "#666";
+        // Apply color based on category and race
+        if (d.race === "Anti-Asian" && d.category === "Acquaintance") return "#3b82f6";  // Blue
+        if (d.race === "Anti-Asian" && d.category === "Stranger") return "#ef4444";     // Red
+        return "#666";  // For other races
       })
       .on("mouseover", (event, d) => {
         tooltip.transition().style("opacity", 0.95);
@@ -50,24 +51,32 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
       .delay((_, i) => i * 100)
       .ease(d3.easeCubicOut)
       .attr("y", d => y(d.value))
-      .attr("height", d => barHeight - y(d.value));
+      .attr("height", d => barHeight - y(d.value)); // Set height based on value
 
     group.selectAll("text.race-label")
       .data(bars)
       .join("text")
       .attr("class", "race-label")
       .attr("x", d => x1(d.race) + x1.bandwidth() / 2)
-      .attr("y", barHeight + 12)
+      .attr("y", barHeight + 18)  // Adjust label position vertically to avoid overlap
       .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .style("fill", "#ccc")
       .text(d => d.race.replace("Anti-", ""));
   });
 
   g.append("g")
     .attr("transform", `translate(0,${barHeight})`)
-    .call(d3.axisBottom(x0));
+    .call(d3.axisBottom(x0).tickSize(0)) // Removing tick lines
+    .selectAll(".tick text")
+    .style("fill", "#fff") // White text for the labels
+    .style("font-size", "14px");
 
   g.append("g")
-    .call(d3.axisLeft(y).ticks(10).tickFormat(d => `${d}%`));
+    .call(d3.axisLeft(y).ticks(7).tickFormat(d => `${d}%`)) // Adjust Y-axis ticks to 7
+    .selectAll(".tick text")
+    .style("fill", "#fff") // White text for the labels
+    .style("font-size", "14px"); // Make the text bigger
 
   g.append("text")
     .attr("x", barWidth / 2)
@@ -76,4 +85,5 @@ d3.csv("data/1-6_relationship.csv", d3.autoType).then(data => {
     .style("font-size", "18px")
     .style("fill", "#ccc")
     .text("Victim-Offender Relationship");
+
 });

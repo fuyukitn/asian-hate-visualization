@@ -1,13 +1,13 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Georgia';
-    background-color: #111;
-    color: #383838;
-    overflow-x: hidden;
-  }
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Georgia';
+  background-color: #111;
+  color: #383838;
+  overflow-x: hidden;
+}
 
   a {
     color: #eee;
@@ -24,457 +24,457 @@ html, body {
   }
   
 
-  /* LEFT COLUMN => pinned map, fills half the screen */
-  .left {
-    position: sticky;
-    top: 0;
-    width: 60%;
-    height: 100vh;
-  }
-  
-  /* 
-     #mapContainer => holds the map & legend,
-     with some 20px padding so it’s not too tight 
-     around the edges.
-  */
-  #mapContainer {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    background: #acacac;
-  }
-  
-  /* The #map element will have different heights 
-     depending on the step. By default: height: 100%.
-     In Step 3, we add a “full-height” class => 100vh.
-  */
-  #map {
-    background-color: #acacac;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    width: 70%;
-    height: 100%;
-  }
-  
-  #map svg {
-    width: 100%;
-    height: 100%;
-  }
-  #map-steps {
-    position: relative;
-    z-index: 2;
-  }
-  #story-box {
-    position: relative;
-    z-index: 10;
-    width: 35%;
-    margin-left: auto;
-    margin-right: 30px;
-    padding: 0 100px 0 100px;
+/* LEFT COLUMN => pinned map, fills half the screen */
+.left {
+  position: sticky;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+}
+
+/* 
+   #mapContainer => holds the map & legend,
+   with some 20px padding so it’s not too tight 
+   around the edges.
+*/
+#mapContainer {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #acacac;
+}
+
+/* The #map element will have different heights 
+   depending on the step. By default: height: 100%.
+   In Step 3, we add a “full-height” class => 100vh.
+*/
+#map {
+  background-color: #acacac;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 70%;
+  height: 100%;
+}
+
+#map svg {
+  width: 100%;
+  height: 100%;
+}
+#map-steps {
+  position: relative;
+  z-index: 2;
+}
+#story-box {
+  position: relative;
+  z-index: 10;
+  width: 35%;
+  margin-left: auto;
+  margin-right: 30px;
+  padding: 0 100px 0 100px;
+}
+
+.step {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 10px;
+  margin-right: 40px;
+  color: #111;
+  pointer-events: auto; /* re-enable interactivity inside */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.step[data-step="5"],
+.step[data-step="6"],
+.step[data-step="7"] {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.step-content {
+  background: rgba(30, 30, 30, 0.6); /* darker blurry box */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 20px 40px 20px 40px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+  color: #ddd; /* soft white */
+  max-width: 90%;
+  pointer-events: auto;
+}  
+
+.step-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.step-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+}  
+
+.scroll-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 100px 30px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* RIGHT COLUMN => scrollytelling steps */
+.right {
+  width: 40%;
+  height: 100vh;
+  overflow-y: scroll;
+  background: #f9f9f9;
+}
+
+.scrolly {
+  position: relative;
+  width: 100%;
+}
+
+/* Fixed graphic on the left */
+.graphic {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+/* White boxes for map/chart */
+#chart2Container {
+  width: 90%;
+  height: 80%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+#chart2 {
+  width: 100%;
+  height: 100%;
+}
+
+/* Steps on the right */
+.steps {
+  position: relative;
+  width: 30%;
+  margin-left: 65%;
+  z-index: 2;
+}
+
+/* .step, .step2 {
+  height: 100vh;
+  padding: 4rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+} */
+
+/* Cover is a full screen */
+.cover {
+  width: 100%;
+  height: 100vh;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 3;
+}
+
+/* Show map by default, hide chart2 by default */
+#story1 .graphic {
+  visibility: visible;
+  opacity: 1;
+}
+
+#story2 .graphic {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#legend {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px;
+  font-size: 12px;
+  background: #bdbdbd;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+#tooltip {
+  position: absolute;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  color: #eee;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  font-size: 12px;
+  display: none;
+}
+
+.state {
+  stroke: #333;
+  stroke-width: 1;
+  cursor: pointer;
+}
+
+.state-label {
+  fill: #222;
+  font-size: 10px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+#offender-section {
+  position: relative;
+  z-index: 2;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+#offender-section .step h2 {
+  color: #fff;
+}
+
+#offender-section .step p {
+  color: #ccc;
+}
+
+#offender-section .steps {
+  background-color: #1a1a1a;
+}
+
+#offender-section .step-content {
+  background-color: rgba(40, 40, 40, 0.8);
+  color: #eee;
+}
+
+/* Axis lines and ticks */
+  #offender-section .axis path,
+  #offender-section .axis line {
+  stroke: #aaa;
   }
 
-  .step {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    border-radius: 10px;
-    margin-right: 40px;
-    color: #111;
-    pointer-events: auto; /* re-enable interactivity inside */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .step[data-step="5"],
-  .step[data-step="6"],
-  .step[data-step="7"] {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-  .step-content {
-    background: rgba(30, 30, 30, 0.6); /* darker blurry box */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 20px 40px 20px 40px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
-    color: #ddd; /* soft white */
-    max-width: 90%;
-    pointer-events: auto;
-  }  
-
-  .step-content h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-  
-  .step-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }  
-
-  .scroll-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 35%;
-    height: 100%;
-    overflow-y: auto;
-    padding: 100px 30px;
-    z-index: 10;
-    pointer-events: none;
-  }
-  
-  /* RIGHT COLUMN => scrollytelling steps */
-  .right {
-    width: 40%;
-    height: 100vh;
-    overflow-y: scroll;
-    background: #f9f9f9;
+  /* Chart legends */
+  #offender-section .legend text {
+  fill: #fff;
   }
 
-  .scrolly {
-    position: relative;
-    width: 100%;
-  }
-  
-  /* Fixed graphic on the left */
-  .graphic {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 60%;
-    height: 100vh;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease;
-  }
-  
-  /* White boxes for map/chart */
-  #chart2Container {
-    width: 90%;
-    height: 80%;
-    padding: 20px;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-  }
-  
-  #chart2 {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Steps on the right */
-  .steps {
-    position: relative;
-    width: 30%;
-    margin-left: 65%;
-    z-index: 2;
-  }
-  
-  /* .step, .step2 {
-    height: 100vh;
-    padding: 4rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid #eee;
-  } */
-  
-  /* Cover is a full screen */
-  .cover {
-    width: 100%;
-    height: 100vh;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    z-index: 3;
-  }
-  
-  /* Show map by default, hide chart2 by default */
-  #story1 .graphic {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  #story2 .graphic {
-    visibility: hidden;
-    opacity: 0;
-  }
-  
-  #legend {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 8px;
-    font-size: 12px;
-    background: #bdbdbd;
-    color: #ddd;
-    border: 1px solid #444;
-  }
-  
-  #tooltip {
-    position: absolute;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.85);
-    color: #eee;
-    padding: 6px 10px;
-    border-radius: 4px;
-    pointer-events: none;
-    font-size: 12px;
-    display: none;
-  }
-  
-  .state {
-    stroke: #333;
-    stroke-width: 1;
-    cursor: pointer;
-  }
-  
-  .state-label {
-    fill: #222;
-    font-size: 10px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    pointer-events: none;
+  #offender-section .chart-title {
+  fill: #fff;
+  font-size: 20px;
+  font-weight: bold;
   }
 
-  #offender-section {
-    position: relative;
-    z-index: 2;
-    background-color: #1a1a1a;
-    color: white;
-  }
-  
-  #offender-section .step h2 {
-    color: #fff;
-  }
-  
-  #offender-section .step p {
-    color: #ccc;
-  }
-  
-  #offender-section .steps {
-    background-color: #1a1a1a;
-  }
-  
-  #offender-section .step-content {
-    background-color: rgba(40, 40, 40, 0.8);
-    color: #eee;
+  /* Y-axis label */
+  #offender-section .axis-label {
+  fill: #ddd;
+  font-weight: 600;
   }
 
-  /* Axis lines and ticks */
-    #offender-section .axis path,
-    #offender-section .axis line {
-    stroke: #aaa;
+  #offender-section svg text {
+      fill: #fff;
     }
 
-    /* Chart legends */
-    #offender-section .legend text {
-    fill: #fff;
-    }
+#map-section {
+  position: relative;
+  z-index: 2;
+}
 
-    #offender-section .chart-title {
-    fill: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    }
+.scroll-overlay {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 30px;
+  z-index: 3;
+  pointer-events: auto;
+}
 
-    /* Y-axis label */
-    #offender-section .axis-label {
-    fill: #ddd;
-    font-weight: 600;
-    }
+.step-content {
+  max-width: 700px;
+  margin: 0 auto 100px auto;
+}
 
-    #offender-section svg text {
-        fill: #fff;
-      }
+#hero-transition {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://static01.nyt.com/images/2021/03/31/nyregion/31nyhate-suspect1/31nyhate-suspect1-jumbo-v2.jpg?quality=75&auto=webp') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  color: #fff;
+  text-align: left;
+  padding: 0 20px 0 100px;
+  z-index: 3;
+}
 
-  #map-section {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .scroll-overlay {
-    position: relative;
-    width: 100%;
-    background: #ffffff;
-    padding: 100px 30px;
-    z-index: 3;
-    pointer-events: auto;
-  }
-  
-  .step-content {
-    max-width: 700px;
-    margin: 0 auto 100px auto;
-  }
-  
-  #hero-transition {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url('https://static01.nyt.com/images/2021/03/31/nyregion/31nyhate-suspect1/31nyhate-suspect1-jumbo-v2.jpg?quality=75&auto=webp') center center / cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    color: #fff;
-    text-align: left;
-    padding: 0 20px 0 100px;
-    z-index: 3;
-  }
-  
-  .hero-content {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 12px;
-    max-width: 600px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-  }
-  
-  .hero-content h1 {
-    font-size: 2rem;
-    margin-bottom: 18px;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  .hero-content p {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    color: #eee;
-  }
-  
+.hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #eee;
+}
+
 
 
 /* === Merged  === */
 
 /* === left column === */
 #graphic {
-  position: sticky;
-  top: 0;
-  width: 60%;
-  height: 100vh;
-  background: linear-gradient(to right, #111, #000);
-  order: 1;
+position: sticky;
+top: 0;
+width: 60%;
+height: 100vh;
+background: linear-gradient(to right, #111, #000);
+order: 1;
 }
 
 /* === right column === */
 #scrolly {
-  width: 40%;
-  padding: 60px 30px;
-  background: #000;
-  color: #fff;
-  order: 2;
+width: 40%;
+padding: 60px 30px;
+background: #000;
+color: #fff;
+order: 2;
 }
 
 svg {
-  width: 100%;
-  height: 100%;
+width: 100%;
+height: 100%;
 }
 
 text.race-label {
-  font-size: 10px;
-  fill: #ccc;
+font-size: 10px;
+fill: #ccc;
 }
 
 .message-overlay {
-  position: absolute;
-  top: 50%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-  font-size: 3vw;
-  line-height: 1.4;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.3);
-  pointer-events: none;
-  z-index: 10;
-  max-width: 100%;
-  opacity: 0;
-  transition: opacity 1.5s ease, transform 1.5s ease;
-  font-family: Georgia, "Times New Roman", Times, serif;
+position: absolute;
+top: 50%;
+left: 80%;
+transform: translate(-50%, -50%);
+font-size: 3vw;
+line-height: 1.4;
+text-align: center;
+color: rgba(255, 255, 255, 0.3);
+pointer-events: none;
+z-index: 10;
+max-width: 100%;
+opacity: 0;
+transition: opacity 1.5s ease, transform 1.5s ease;
+font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .message-overlay.visible {
-  opacity: 1;
-  transform: translate(-50%, -60%);
+opacity: 1;
+transform: translate(-50%, -60%);
 }
 
 .stride {
-  margin-bottom: 100vh;
-  min-height: 60vh;
-  font-size: 18px;
-  line-height: 1.5;
+margin-bottom: 100vh;
+min-height: 60vh;
+font-size: 18px;
+line-height: 1.5;
 }
 
 #intro-hero {
-  height: 100vh;
-  width: 100%;
-  background: linear-gradient(to left, #111, #000);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  font-family: Georgia, 'Times New Roman', serif;
-  padding: 0 20px;
+height: 100vh;
+width: 100%;
+background: linear-gradient(to left, #111, #000);
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+color: white;
+font-family: Georgia, 'Times New Roman', serif;
+padding: 0 20px;
 }
 
 .intro-content h1 {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  font-weight: bold;
+font-size: 2.8rem;
+margin-bottom: 20px;
+font-weight: bold;
 }
 
 .intro-content p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 10px auto;
+font-size: 1.2rem;
+max-width: 600px;
+margin: 10px auto;
 }
 
 .scroll-hint {
-  font-size: 1rem;
-  opacity: 0.6;
-  margin-top: 30px;
+font-size: 1rem;
+opacity: 0.6;
+margin-top: 30px;
 }
 
 
 /* Closing message styling */
 .closing-message {
-  padding: 100px 30px;
-  background: #111;
-  color: #eee;
-  font-size: 18px;
-  line-height: 1.6;
-  text-align: center;
-  min-height: 100vh;
-  box-sizing: border-box;
+padding: 100px 30px;
+background: #111;
+color: #eee;
+font-size: 18px;
+line-height: 1.6;
+text-align: center;
+min-height: 100vh;
+box-sizing: border-box;
 }
 
 .step.end {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #111; /* same as other steps or customize */
-  color: #fff;
-  padding: 60px 30px;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+background: #111; /* same as other steps or customize */
+color: #fff;
+padding: 60px 30px;
 }
