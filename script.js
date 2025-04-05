@@ -10,8 +10,8 @@ const barHeight = height - margin.top - margin.bottom;
 const svg = d3.select("svg")
   .attr("viewBox", `0 0 ${width} ${height}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
-  .style("width", "80%")
-  .style("height", "80%");
+  .style("width", "100%")
+  .style("height", "100%");
 const tooltip = d3.select("#tooltip");
 const message = document.getElementById("message-overlay");
 
@@ -29,34 +29,38 @@ const messages = {
 };
 
 // Append SVG groups for each chart and set initial opacity to 0
+const scale = 0.75;
+const offsetX = (width - barWidth * scale) / 2;
+const offsetY = (height - barHeight * scale) / 2;
+
 const lineChart = svg.append("g")
   .attr("id", "line-chart")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 const lineChartPerCapita = svg.append("g")
   .attr("id", "line-chart-percapita")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 const sexPieGroup = svg.append("g")
   .attr("id", "sex-pie-group")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 const barLocation = svg.append("g")
   .attr("id", "bar-location")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 const barRelationship = svg.append("g")
   .attr("id", "bar-relationship")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 const densityGroup = svg.append("g")
   .attr("id", "density-group")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`)
+  .attr("transform", `translate(${offsetX}, ${offsetY}) scale(${scale})`)
   .style("opacity", 0);
 
 

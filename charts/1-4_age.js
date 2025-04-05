@@ -12,7 +12,7 @@ d3.csv("data/1-4_age.csv", d3.autoType).then(data => {
 
   const color = d3.scaleOrdinal()
     .domain(races)
-    .range(["#ef4444", "#6b7280", "#a3a3a3"]);
+    .range(["#a3a3a3", "#ef4444", "#6b7280"]);
 
   const line = d3.line()
     .x(d => x(d.age))
