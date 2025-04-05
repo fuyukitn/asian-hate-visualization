@@ -2,6 +2,10 @@
 
 **Authors**: Akbar Saputra, Fuyuki Tani  
 
+## Live Visualization
+
+ 🌐 [Explore the visualization](https://fuyukitn.github.io/asian-hate-visualization/)
+
 ## Project Description
 
 This project presents an interactive, scroll-driven narrative visualization that explores the unique characteristics of anti-Asian hate crimes in the United States and compares them to those targeting other racial and ethnic groups, such as African Americans and Hispanics. By allowing users to engage with multiple dimensions of the data—such as victim-offender relationships, crime locations, and offender demographics—the visualization seeks to illuminate how anti-Asian hate crimes manifest differently and may require group-specific responses.
@@ -33,10 +37,6 @@ All sources are public and freely available for use.
 - HTML/CSS  
 - JavaScript  
 - Scrollama.js (for scroll-driven storytelling)
-
-## Live Visualization
-
-- 🌐 [Explore the visualization](https://fuyukitn.github.io/asian-hate-visualization/)
 
 ## Acknowledgments
 
