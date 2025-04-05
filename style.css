@@ -431,7 +431,7 @@ line-height: 1.5;
     width: 100%;
     background: 
       linear-gradient(to right, rgba(0, 0, 0, 0) 40%, rgb(31, 31, 31) 80%),
-      url('/media/img.jpg');
+      url('https://live.staticflickr.com/65535/51059992826_206208229f_b.jpg');
     background-size: cover;
     background-position: left center;
     background-repeat: no-repeat;
